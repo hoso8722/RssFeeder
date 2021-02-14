@@ -1,0 +1,17 @@
+/Config
+/app/tmp
+/app/Config/database.*
+/app/Config/core.php
+/app/lib
+/app/vendors
+/app/plugins
+/lib
+/plugins
+/vendors
+/build
+/dist
+.DS_Store
+/tags
+empty
+/data/*
+null

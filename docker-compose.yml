@@ -1,0 +1,46 @@
+version: '3'
+services:
+  web:
+    container_name: web
+    build: .
+    ports:
+    - "80:80"
+    environment:
+      TZ: Asia/Tokyo
+      # bargeでは、/usr/local/binも追加しておかないと起動できない。
+      PATH: ${PATH}:/usr/local/bin:/root/.composer/vendor/bin
+    volumes:
+      - ./:/var/www/html
+      - ./config/apache2/sites-available:/etc/apache2/sites-available
+    links:
+      - db
+    networks:
+      matome:
+        ipv4_address: 172.20.0.3
+
+  db:
+    image: mysql:5.6
+    container_name: mysql5.6
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_general_ci --init-connect="SET NAMES utf8" --innodb_file_per_table=1 --innodb_file_format=BARRACUDA
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: 2chmatomeru
+      MYSQL_USER: jinchangz
+      MYSQL_PASSWORD: secret
+    volumes:
+      - "./data:/var/lib/mysql"
+      #- "./initdb.d:/docker-entrypoint-initdb.d"
+      - ./sql:/sql
+    networks:
+      matome:
+        ipv4_address: 172.20.0.2
+    ports:
+        - "13306:3306"
+
+networks:
+  matome:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.20.0.0/16

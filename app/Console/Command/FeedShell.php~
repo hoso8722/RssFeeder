@@ -1,0 +1,162 @@
+<?php
+/**
+ * AppShell file
+ *
+ * PHP 5
+ *
+ * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
+ * Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ *
+ * Licensed under The MIT License
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @link          http://cakephp.org CakePHP(tm) Project
+ * @since         CakePHP(tm) v 2.0
+ * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
+ */
+
+App::uses('Shell', 'Console');
+App::uses('Xml', 'Utility');
+App::uses('CakeEmail', 'Network/Email');
+
+/**
+ * Application Shell
+ *
+ * Add your application-wide methods in the class below, your shells
+ * will inherit them.
+ *
+ * @package       app.Console.Command
+ */
+class FeedShell extends AppShell
+{
+	var $uses = array('Site','Source');
+	
+	function setRssId()
+	{
+		$num = $this->args[0];
+		
+		if(is_numeric($num))
+		{
+			$total = $this->Site->find('count');
+			$num = intval($total / $num);
+			
+			$this->Site->recursive = -1;
+			$order = array('`Site`.`rsscount`' => 'desc');
+			$datas = $this->Site->find('all',array('order' => $order));
+			
+			if($num >= 0)
+			{
+				$div = $num + 1;
+				$rssid = 1;
+				$count = 1;
+				foreach($datas as $d)
+				{
+					$this->Site->read('rssid',$d['Site']['id']);
+					$this->Site->set('rssid',$rssid);
+					$this->Site->save();
+					
+					if(($count%$div) == 0)
+					{
+						$rssid++;
+						$count = 1;
+					}else{
+						$count++;
+					}
+				}
+				$this->Site->unbindModel(array('hasMany' => array('Source')));
+				$this->Site->updateAll(
+					array('`Site`.`rsscount`' => 0)
+				);
+			}
+		}		
+	}
+	
+	function getRss()
+	{
+		
+		function scanningRss($rss,$link)
+		{
+			$i = 0;
+			foreach($rss as $d)
+			{
+				if($d['link'] == $link) return $i;
+				$i++;
+			}
+			return $i;
+		}
+		$num = $this->args[0];
+		if(0 <= $num && $num <=60)
+		{
+			$num = $this->args[0];
+			$this->Site->recursive = 0;
+			$datas = $this->Site->findAllByRssid($num);
+			
+			foreach($datas as $d)
+			{
+				$headers = get_headers($d['Site']['sourcerss']);
+				if(strstr($headers[0], '200') || strstr($headers[0],'301') || strstr($headers[0],'302'))
+				{		
+					
+					$rss = Xml::build($d['Site']['sourcerss']);
+					// XMLオブジェクトを配列に変換
+					$rss = xml::toArray($rss);
+					
+					$conditions = array('`Source`.`site_id`' => $d['Site']['id']);
+					$order = array('`Source`.`id`' => 'desc');
+					$entry = $this->Source->find('first',array('conditions' => $conditions ,'order' => $order));
+					$siteId = $entry['Site']['id'];
+					$categoryId = $entry['Site']['category'];
+					$count = scanningRss($rss['RDF']['item'],$entry['Source']['link']);
+					$date = date('Y-m-d H:i:s',mktime());
+					
+					for($i=$count-1;$i >= 0;$i--)
+					{
+						if(strstr($rss['RDF']['item'][$i]['title'],'PR:')) continue;
+						$this->Source->create();
+						$this->Source->set(array(
+							'title' => $rss['RDF']['item'][$i]['title'],
+							'link' => $rss['RDF']['item'][$i]['link'],
+							'created' => $date,
+							'modified' => $date,
+							'total' => 0,
+							'user_ip' => 0,
+							'site_id' => $siteId,
+						));
+						$this->Source->save();
+						$id = $this->Source->getLastInsertId();;  					
+						
+						$this->Source->query("UPDATE `sources` SET `category_id` = " . $categoryId . " WHERE id=" . $id);  					
+						
+						$FieldToInc = 'rsscount';
+						$this->Source->query("UPDATE `sites` SET " . $FieldToInc . " = " . $FieldToInc . " + 1 WHERE id=" . $siteId);  					
+						if($i == 0)
+						{
+							$this->Site->query("UPDATE `sites` SET `modified` = '".$date. "' WHERE `sites`.`id` = '".$siteId."'");
+							/*$this->Site->read('modified',$siteId);
+							$this->Site->set('modified',$date);
+							$this->Site->save();*/
+						}
+					}
+				}else{
+					//Send Mail
+					$Email = new CakeEmail();
+					$Email->config('gmail');// $contact の設定を使う
+					$Email->from(array('jinchangz2@gmail.com' => 'ERROR_MESSAGE'));
+					$Email->to('jinchangz1@gmail.com');
+					$Email->subject('Failed RSS');
+					$Email->send('rss='.$d['Site']['sourcerss'].'&id='.$d['Site']['id']);	
+					
+				}
+			}
+		}	
+	}
+	
+	function resetCount()
+	{
+		$this->Site->unbindModel(array('hasMany' => array('Source')));
+		$this->Site->updateAll(
+			array('`Site`.`count`' => 0)
+		);
+	}
+}

@@ -1,0 +1,38 @@
+<?php
+App::uses('AppController', 'Controller');
+/**
+ * Searchs Controller
+ *
+ * @property Search $Search
+ */
+class SearchsController extends AppController {
+
+	var $uses = array('Source','Site');
+
+	public function index($str = null){
+		if(empty($str) || $str == "　"){
+			return;
+		}else{
+			$str = trim(preg_replace('/\s+/', ' ', $str));
+			$this->set('searchVal',$str);
+			$arrStr = explode(' ',$str);
+			for($i=0,$len=count($arrStr); $i < $len;$i++){
+				$strs['Source.title LIKE'] = "%".$arrStr[$i]."%";
+				$arrs[] = $strs;
+			}
+			$conditions = array('AND' => $arrs);
+			$this->paginate = array(
+				'Source' => array(
+					'conditions' => $conditions,
+					'order' => array('Source.created' => 'desc'),
+					'limit' => 100
+			)
+			);
+			$datas = $this->paginate('Source');
+			$max   = $this->getMax($datas);
+			$this->set('datas',$datas);
+			$this->set('h_data',$max);
+			return;
+		}
+	}
+}
