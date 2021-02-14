@@ -1,5 +1,4 @@
 /Config
-/app/tmp
 /app/Config/database.*
 /app/Config/core.php
 /app/lib
