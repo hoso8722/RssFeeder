@@ -22,6 +22,16 @@ RUN apt-get update \
 RUN cd /etc/apache2/mods-enabled \
     && ln -s ../mods-available/rewrite.load
 
+RUN apt-get install -y \
+    vim \
+    inetutils-ping 
+
 COPY /config/php/php.ini /usr/local/etc/php/php.ini
+# COPY /cron/crontablist /etc/cron.d/crontablist
+# RUN  crontab /etc/cron.d/crontablist
+
+# CMD ["service","apache2","start","&&","crond", "-f"]
+#CMD ["cat","/config/apache2/resolv.conf",">","/etc/resolv.conf"]
+#COPY ./config/apache2/resolv.conf /et
 
 WORKDIR /var/www/html

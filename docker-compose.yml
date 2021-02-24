@@ -1,5 +1,23 @@
 version: '3'
 services:
+  base:
+    build: ./cron
+    image: cron:latest
+    container_name: cron
+    tty: true
+    # working_dir: /srv/app
+    ports:
+      - "4000:4000"
+    environment:
+      TZ: Asia/Tokyo
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      # - ./cron/crontablist:/etc/crontabs/root
+    command:
+      crond -f
+    depends_on:
+      - web
+      - db
   web:
     container_name: web
     build: .
@@ -12,11 +30,16 @@ services:
     volumes:
       - ./:/var/www/html
       - ./config/apache2/sites-available:/etc/apache2/sites-available
+      - ./config/apache2/resolv.conf:/etc/resolv.conf
+      # - ./cron/crontablist:/var/spool/cron/crontabs/root
+      
+      # - ./config/.bashrc:/root/.bashrc
     links:
       - db
     networks:
       matome:
         ipv4_address: 172.20.0.3
+    #command: service cron start
 
   db:
     image: mysql:5.6
