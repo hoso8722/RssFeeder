@@ -103,14 +103,17 @@ class FeedShell extends AppShell
 			//$num = $this->args[0];
 			$this->Site->recursive = 0;
 			$datas = $this->Site->findAllByRssid($num);
-			
+
 			if(empty($datas)){
 				return;
 			}
 			
 			foreach($datas as $d)
 			{
+				print_r('site_rss:'.$d['Site']['sourcerss']);
 				$headers = get_headers($d['Site']['sourcerss']);
+				print('headers:');
+				print_r($headers);
 				if(strstr($headers[0], '200') || strstr($headers[0],'3'))
 				{		
 					
@@ -130,7 +133,7 @@ class FeedShell extends AppShell
 					//initialize valiable
 					$siteId = $entry['Site']['id'];
 					$categoryId = $entry['Site']['category'];
-					$date = date('Y-m-d H:i:s',mktime());
+					$date = date('Y-m-d H:i:s',time());
 					if(!empty($entry['Source']['link']))
 					{
 						$link = $entry['Source']['link'];

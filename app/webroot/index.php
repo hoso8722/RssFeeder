@@ -70,10 +70,9 @@ if (!defined('WWW_ROOT')) {
 	define('WWW_ROOT', dirname(__FILE__) . DS);
 }
 
-print(ROOT);
 if (!defined('CAKE_CORE_INCLUDE_PATH')) {
 	if (function_exists('ini_set')) {
-		ini_set('include_path', ROOT . DS . APP_DIR . DS . 'lib' . PATH_SEPARATOR . ini_get('include_path'));
+		ini_set('include_path', ROOT  . DS . 'lib' . PATH_SEPARATOR . ini_get('include_path'));
 	}
 	if (!include ('Cake' . DS . 'bootstrap.php')) {
 		$failed = true;

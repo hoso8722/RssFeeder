@@ -1,9 +1,12 @@
 /Config
+/app/tmp/cache/models
+/app/tmp/cache/persistent
 /app/Config/database.*
 /app/Config/core.php
 /app/lib
 /app/vendors
 /app/plugins
+/app/tmp/*
 /lib
 /plugins
 /vendors
@@ -14,3 +17,11 @@
 empty
 /data/*
 null
+*.min.js
+all.js
+all.min.js
+app/tmp/cache/models/myapp_cake_model_default_2chmatomeru_list
+app/tmp/cache/models/myapp_cake_model_default_2chmatomeru_sites
+app/tmp/cache/models/myapp_cake_model_default_2chmatomeru_sources
+app/tmp/cache/persistent/myapp_cake_core_file_map
+app/tmp/cache/persistent/myapp_cake_core_method_cache
