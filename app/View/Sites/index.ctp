@@ -1,7 +1,7 @@
 <div class="span9" >
 <ul id="myTab" class="nav nav-tabs">
 <li class="active"><a href="#home" data-toggle="tab"><p class="brand"><i class="icon-play-circle"></i>ブログ一覧/設定</p></a></li>
-<li><a class="notvisited" href="#setRss" data-toggle="tab"><p class="brand"><i class="icon-play-circle"></i>カスタムRSS</p></a></li>
+
 <li><a class="notvisited" href="#profile" data-toggle="tab"><p class="brand"><i class="icon-play-circle"></i>表示設定</p></a></li>
 </ul>
 <div id="myTabContent" class="tab-content">
@@ -9,24 +9,16 @@
 <div class="alert alert-info">
 <button type="button" class="close" data-dismiss="alert">&times;</button>
 <strong>ブログ一覧/設定の使い方</strong><br>
-「フィルタ機能による各ブログサイトの表示\非表示」および「登録RSSの登録/解除」ができます。<br>
-デフォルトではすべてのブログを表示し、登録RSSは未登録の状態です。<br>
+「フィルタ機能による各ブログサイトの表示\非表示」ができます。<br>
+デフォルトではすべてのブログを表示されております。<br>
 <br>
 <strong>「フィルタ機能」</strong>ではテーブル左側の<button class="btn btn-mini btn-primary">表示 O N</button>  <button class="btn btn-mini btn-inverse">表示OFF</button>ボタンで各ブログをフィルタリングしてください。<br>
 <br>
-<strong>「登録RSS」</strong>はテーブル右側のRSSボタンをクリックして登録してください。<br>
-<?php echo $this->Html->image('foff.png',array('alt'=>'RssOff'))?>
-←このアイコンだとRSS登録されていません。<br>
-クリックして<?php echo $this->Html->image('fon.png',array('alt'=>'RssOn'))?>
-のアイコンにしてください。1つでも登録するとTOPページで表示されるようになります。<br><br>
-<strong>「フィルタ機能」「登録RSS」の設定は自動で保存されます。「登録RSS」の最大登録件数は50件までです。<br>
-あまり多くのブログを登録＆表示させすぎると読み込みに時間が掛かるかもしれません！ほどほどに。
-</strong><br>
-お使いになる場合はブラウザの「Javascript」と「Cookie」を有効にしてください。
+
 </div>
 <div id="filter_btn">
 <button id="rmFilter" class="btn btn-small btn-warning">フィルターの設定を削除する</button>
-<button id="rmRss" class="btn btn-small btn-warning">登録RSSの設定を削除する</button>
+
 </div>
 <?php echo $this->element('toolbar'); ?>
 <table cellpadding="0" cellspacing="0" border="0" class="table table-bordered" id="sight">
@@ -92,7 +84,6 @@ default : echo "<td class='tdCat icat_o "; if($chTable[1]==0){echo "hide";} echo
 <select id="top">
 <option value='0'>新着記事</option>
 <option value='1'>注目記事</option>
-<option value='2'>登録RSS</option>
 </select>
 </div>
 <div>
@@ -101,7 +92,8 @@ default : echo "<td class='tdCat icat_o "; if($chTable[1]==0){echo "hide";} echo
 <option value='0'>50</option>
 <option value='1'>100</option>
 <option value='2'>150</option>
-<option value='3'>200</option>	<option value='4'>250</option>
+<option value='3'>200</option>	
+<option value='4'>250</option>
 <option value='5'>300</option>
 </select>
 </div>
@@ -115,52 +107,15 @@ default : echo "<td class='tdCat icat_o "; if($chTable[1]==0){echo "hide";} echo
 <option value='5'>300</option>
 </select>
 </div>
-<div><span>RSSの各表示件数:</span>
-<select id='disprss'>
-<option value='0'>2</option>
-<option value='1'>4</option>
-<option value='2'>6</option>
-<option value='3'>8</option>
-<option value='4'>10</option>
-<option value='5'>15</option>
-<option value='6'>20</option>
-<option value='7'>25</option>
-<option value='8'>30</option>
-</select>
-</div>
+
 <ul id="btnlist">
 <li><button id="setDetail" class="btn btn-small btn-success">表示設定を保存する</button></li>
 <li><button id="rmDetails" class="btn btn-small btn-warning">表示設定を削除する</button></li>
 <li><button id="rmAll" class="btn btn-small btn-danger">すべての設定を削除する</button></li>
 </ul>
 </div>
-<div class="tab-pane fade" id="setRss">
-<div class="alert alert-info">
-<button type="button" class="close" data-dismiss="alert">&times;</button>
-<strong>カスタムRSSの使い方</strong><br>
-カスタムRSSではユーザーの方が自由にRSSを登録できます<br>
-「カスタムRSS」に登録したRSSと「登録RSS」で登録したRSSがTOPページの登録RSSタブに表示されます。
-入力フォームに表示したいRSSのURLを入力し「エンターキー」または<i class="icon-plus-sign"></i>をクリックしてください<br>
-<strong>
-登録件数は50件までですがあまり多く登録すると表示に時間が掛かります<br>
-URLをフィルタリングしておりますがもし、不具合などありましたら『お問い合わせ」フォームから詳細を述べてご連絡ください。
-</strong>
-<br>
-</div>
-<ul id="btnlist">
-<li><button id="rmRssList" class="btn btn-small btn-warning">RSSリスト一覧を削除する</button></li>
-</ul>
-<p>登録したいRSSのURLを入力してください</p>
-<div id="loading"></div>
-<div style="span12" class="input-prepend" id="rssInput">
-<button id="getRss" style="height: 30px;" class="add-on" type="submit"><i class="icon-plus-sign"></i></button>
-<input type="text" id="rssValue" style="width:80%;" name="">
-</div>
-<table id="rssList" cellpadding="0" cellspacing="0" border="0" class="table table-bordered table-striped">
-<thead><tr><th　class="nosort"><p>登録済みRSSリスト一覧</p></th></tr></thead>
-<tbody>
-</tbody>
-</table>
+
+
 </div>
 </div>
 

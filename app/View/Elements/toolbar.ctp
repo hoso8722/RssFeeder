@@ -11,9 +11,8 @@
 <li><button id='liBlog' class="btn  btn-small <?php if($chTable[3]==0){echo 'btn-inverse">ブログを非表示</button>';}else{echo 'btn-info">ブログを表示</button>';} ?></li>
 <li><button id='liOver' class="btn  btn-small <?php if($chTable[4]==0){echo 'btn-inverse">記事を折り返さない</button>';}else{echo 'btn-info">記事を折り返す</button>';} ?></li>
 <li><button id='liHitHead' class="btn  btn-small
-<?php if($chTable[5]==1){echo 'btn-info">記事にHIT数を表示１</button>';
-}elseif($chTable[5]==2){echo 'btn-info">記事にHIT数を表示２</button>';
-}elseif($chTable[5]==3){echo 'btn-info">記事末尾にHIT数を表示</button>';
+<?php 
+if($chTable[5]>=1){echo 'btn-info">記事末尾にHIT数を表示</button>';
 }elseif($chTable[5]==0){echo 'btn-inverse">記事にHIT数を非表示</button>';
 }?>
 </li>

@@ -1,12 +1,13 @@
-<?php echo $this->Html->script('jquery-1.7.2.min.js'); ?>  
+<!-- <?php echo $this->Html->script('jquery-1.7.2.min.js'); ?>  
 <?php echo $this->Html->script('bootstrap.js'); ?>
 <?php echo $this->Html->script('bootstrap-datepicker.js'); ?>
 <?php echo $this->Html->script('Cookie.js'); ?>
 <?php echo $this->Html->script('jquery.dataTables.js'); ?>
 <?php echo $this->Html->script('jquery.powertip-1.1.0.js'); ?>
 <?php echo $this->Html->script('DT_bootstrap.js'); ?>
-<?php echo $this->Html->script('static.js'); ?>
+<?php echo $this->Html->script('static.js'); ?> -->
 <!-- <?php echo $this->Html->script('all.min.js'); ?> -->
+<?php echo $this->Html->script('dest/bundle.js'); ?> 
 <script type="text/javascript" src="http://www.google.com/jsapi"></script>
 <script type="text/javascript">
 initCookie('set[chTable]','<?php echo join(".",$chTable); ?>');

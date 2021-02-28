@@ -34,13 +34,13 @@ case 0: echo "<td class='icat_o tdCat '"; if($chTable[1]==0){echo "hide";} echo 
 default : echo "<td class='icat_o tdCat '"; if($chTable[1]==0){echo "hide";} echo $data['Site']['category'],'</td>';break;
 } ?>
 <td class="tdLink">
-<span class="tdDiv" <?php if($chTable[5]<3 && $chTable[6]==0) echo 'style="float:left;"'?>>
-<?php if($chTable[5]==1) echo '<div class="divHit"><span class="num">',$data['Source']['total'],'</span><span class="hit">HIT</span></div>';?>
+<span class="tdDiv">
+
 <a class="<?php if($chTable[4]==1)echo 'ofoff';?>" href="<?php echo h($data['Source']['link']); ?>" onClick="clickCount(<?php echo $data['Source']['id']; ?>);" target="_blank">
-<?php if ($chTable[5]==2) echo '<div class="divHit" style="display:inline"><span class="num">',$data['Source']['total'],'</span><span class="hit">HIT</span></div>';?>
+
 <?php echo h($data['Source']['title']); ?>
 </a>
-<?php if($chTable[5]==3) echo '<div style="display: inline;" class="divHitTail"><span class="num">',$data['Source']['total'],'</span><span class="hit">HIT</span></div>';?>
+<?php if($chTable[5]==1) echo '<div style="display: inline;" class="divHitTail"><span class="num">',$data['Source']['total'],'</span><span class="hit">HIT</span></div>';?>
 <?php if($chTable[6]==1) echo '<span class="spBlog">',$data['Site']['source'],'</span>';?>
 </span>
 <span id="bm_<?php echo $data['Source']['id'];?>" class="starOff"></span>
@@ -48,7 +48,7 @@ default : echo "<td class='icat_o tdCat '"; if($chTable[1]==0){echo "hide";} ech
 <td class="hbar" ><?php echo $data['Source']['total']; ?></td>
 <td class="tdHit <?php if($chTable[2]==0)echo 'hide';?>">
 <div class="progress">
-<div class="bar" style="width: <?php echo (round(($data['Source']['total'] / $h_data), 2) * 100) ;?>%"></div>
+<div class="bar" style="width: <?php echo (round(($data['Source']['total'] / $hr_data), 2) * 100) ;?>%"></div>
 </div>
 </td>
 <td class="ss tdBlog <?php if($chTable[3]==0)echo 'hide';?>"><?php echo $this->Html->link($data['Site']['source'], '/blog/index/'.$data['Site']['id']); ?></td>

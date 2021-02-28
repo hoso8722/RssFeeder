@@ -1,16 +1,15 @@
 /Config
-/app/tmp/cache/models
-/app/tmp/cache/persistent
 /app/Config/database.*
 /app/Config/core.php
 /app/lib
 /app/vendors
 /app/plugins
 /app/tmp/*
+/app/webroot/js/modules
 /lib
 /tmp
 /plugins
-/vendors
+/vendorsd
 /build
 /dist
 .DS_Store
@@ -21,3 +20,6 @@ null
 *.min.js
 all.js
 all.min.js
+/cron
+/node_modules
+
