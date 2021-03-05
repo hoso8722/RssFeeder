@@ -33,7 +33,7 @@
 <th id="thDate" class="<?php if($chTable[0]==0)echo 'hide';?>" style="width:10%;">登録日</th>
 <th class="dbar"></th>
 <th id="thBlog" class="<?php if($chTable[3]==0)echo 'hide';?>" style="width:3%;"><i class="icon-list-alt"></i></th>
-<th class="nosort" style="width:3%;"><i class="icon-signal"></i></th>
+<!-- <th class="nosort" style="width:3%;"><i class="icon-signal"></i></th> -->
 </tr>
 </thead>
 <tbody>
@@ -63,7 +63,7 @@ default : echo "<td class='tdCat icat_o "; if($chTable[1]==0){echo "hide";} echo
 <td class="cr"><?php echo substr($data['Site']['created'],0,16); ?></td>
 <td class="tdDate <?php if($chTable[0]==0)echo 'hide';?>"><?php echo h(substr($data['Site']['created'],0,10)); ?></td>
 <td class="tdBlog <?php if($chTable[3]==0)echo 'hide';?>"><a href="<?php echo h($data['Site']['sourceurl']); ?>" target="_blank"><i class="icon-share"></i></a></td>
-<td class='feeds foff'></td>
+<!-- <td class='feeds foff'></td> -->
 </tr>
 <?php $i++; } ?>
 </tbody>
