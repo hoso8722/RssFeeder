@@ -5,7 +5,9 @@
 /app/vendors
 /app/plugins
 /app/tmp/*
-/app/webroot/js/modules
+/app/webroot/js/minify
+/app/webroot/js/debug
+compiler.jar
 /lib
 /tmp
 /plugins
@@ -17,9 +19,14 @@
 empty
 /data/*
 null
-*.min.js
 all.js
 all.min.js
+static.js
+combine.js
 /cron
 /node_modules
+/.vscode
+.htaccess
+
+
 
