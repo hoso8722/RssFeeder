@@ -78,7 +78,7 @@ if (!defined('CAKE_CORE_INCLUDE_PATH')) {
 		$failed = true;
 	}
 } else {
-	if (!include (CAKE_CORE_INCLUDE_PATH . DS . 'Cake' . DS . 'bootstrap.php')) {
+	if (!include (CAKE_CORE_INCLUDE_PATH . DS . APP_DIR . DS . 'Cake' . DS . 'bootstrap.php')) {
 		$failed = true;
 	}
 }
