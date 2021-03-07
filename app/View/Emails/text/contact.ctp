@@ -29,4 +29,4 @@
     【RSS】 <?php echo $rss; ?>
     
     【本文】
-    <?php echo $body; ?> 
+    <?php echo $body; ?>

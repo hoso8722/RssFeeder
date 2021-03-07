@@ -54,5 +54,3 @@ if ( $url ) {
 
 // parse smarty template, and display using the variables we assigned
 $smarty->display('simple.smarty');
-
-?>

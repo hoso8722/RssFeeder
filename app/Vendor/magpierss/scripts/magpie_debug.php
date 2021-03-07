@@ -76,5 +76,3 @@ function test_library_support() {
 	   echo "<b>OK:</b>  Support for character munging.<br />\n";
    }
 }
-
-?>

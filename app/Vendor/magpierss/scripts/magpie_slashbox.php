@@ -62,5 +62,3 @@ function slashbox ($rss) {
 	
 	echo "</table>";
 }
-
-?>

@@ -72,7 +72,7 @@ var nend_params = {"media":8705,"site":48315,"spot":116005,"type":2,"oriented":1
 </ul>
 </li>
 </ul>
-        
+
 <div class="input-append date" data-date="2012/01/02" data-date-format="yyyy/mm/dd" style=" float: right; margin-top: 5px;">
 <?php
 echo $this->Form->create(false,
@@ -101,7 +101,8 @@ echo $this->Form->end();
 <li id='book'><?php echo $this->Html->link('ブックマーク', '/bookmark/index'); ?></li>
 <li id='info'><?php echo $this->Html->link('お問い合わせ', '/contact/index'); ?></li>
 </ul>
-<?php if($ocmenu==0){
+<?php
+if($ocmenu==0){
 echo "<button id='ocmenu'>MENUを開く</button><div id='menu' style='display:none;'>";
 }else{
 echo "<button id='ocmenu'>MENUを閉じる</button><div id='menu' style='display:block;'>";}

@@ -2,10 +2,10 @@
 App::uses('AppController', 'Controller');
 App::uses('Sanitize', 'Utility');
 /**
- * Forms Controller
- *
- * @property Form $Form
- */
+*Forms Controller
+*
+*@property Form $Form
+*/
 class FormsController extends AppController {
 
 	var $uses = array('Source','Site');
@@ -20,6 +20,7 @@ class FormsController extends AppController {
 		}
 		return;
 	}
+
 	public function date(){
 		$this->modelClass = null;
 		if ($this->request->data){

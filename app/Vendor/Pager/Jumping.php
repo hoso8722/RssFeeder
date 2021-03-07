@@ -251,4 +251,3 @@ class Pager_Jumping extends Pager_Common
 
     // }}}
 }
-?>

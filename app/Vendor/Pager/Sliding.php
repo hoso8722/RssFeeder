@@ -286,4 +286,3 @@ class Pager_Sliding extends Pager_Common
 
     // }}}
 }
-?>
