@@ -28,6 +28,7 @@ combine.js
 /node_modules
 /.vscode
 /.htaccess
-
+phpinfo.php
+test.php
 
 

@@ -24,14 +24,20 @@ RUN cd /etc/apache2/mods-enabled \
 
 RUN apt-get install -y \
     vim \
-    inetutils-ping 
+    inetutils-ping \
+    gosu
 
-COPY /config/php/php.ini /usr/local/etc/php/php.ini
+COPY config/php/php.ini /usr/local/etc/php/php.ini
 # COPY /cron/crontablist /etc/cron.d/crontablist
 # RUN  crontab /etc/cron.d/crontablist
 
 # CMD ["service","apache2","start","&&","crond", "-f"]
-#CMD ["cat","/config/apache2/resolv.conf",">","/etc/resolv.conf"]
-#COPY ./config/apache2/resolv.conf /et
+# CMD ["cat","/config/apache2/resolv.conf",">","/etc/resolv.conf"]
+# COPY ./config/apache2/resolv.conf /et
+
+# COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+# RUN chmod +x /usr/local/bin/entrypoint.sh
 
 WORKDIR /var/www/html
+
+# ENTRYPOINT [ "/usr/local/bin/entrypoint.sh" ]

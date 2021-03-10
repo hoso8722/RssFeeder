@@ -14,7 +14,6 @@ class ContactController extends AppController
 
 	public function index()
 	{
-		$this->redirect(['controller' => 'sites', 'action' => 'index']);
 		if ($this->request->is('post') || $this->request->is('pust')) {
 			$this->Contact->set($this->request->data);
 			if ($this->Contact->Validates()) {

@@ -10,11 +10,13 @@ if (!isset($channel['title'])) {
 echo $this->Rss->document(
 	array(
 		'xmlns:dc' => "http://purl.org/dc/elements/1.1/",
-		'xmlns:sy'=>"http://purl.org/rss/1.0/modules/syndication/",
-		'xmlns:admin'=>"http://webns.net/mvcb/",
-		'xmlns:rdf'=>"http://www.w3.org/1999/02/22-rdf-syntax-ns#"	
+		'xmlns:sy' => "http://purl.org/rss/1.0/modules/syndication/",
+		'xmlns:admin' => "http://webns.net/mvcb/",
+		'xmlns:rdf' => "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 	),
 	$this->Rss->channel(
-		array(), $channel, $this->fetch('content')
+		array(),
+		$channel,
+		$this->fetch('content')
 	)
 );

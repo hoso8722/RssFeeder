@@ -18,7 +18,11 @@ class RangesController extends AppController {
 			$this->set('fromDay',date('Y/n/j',mktime(0,0,0,$fromM,$fromD,$fromY)));
 			$this->set('toDay',date('Y/n/j',mktime(0,0,0,$toM,$toD,$toY)));
 				
-			$conditions = array('`Source`.`created` BETWEEN ? AND ?' => array($fromDay,$toDay));
+			$conditions = array(
+				'`Source`.`created` BETWEEN ? AND ?' => array(
+					$fromDay,$toDay
+				)
+			);
 			$this->paginate = array(
 		    	'Source' => array(
 		    		'conditions' => $conditions,

@@ -31,6 +31,13 @@ services:
       - ./:/var/www/html
       - ./config/apache2/sites-available:/etc/apache2/sites-available
       - ./config/apache2/resolv.conf:/etc/resolv.conf
+      # - ./entrypoint.sh /usr/local/bin/entrypoint.sh
+
+    # command: 
+    #   chmod +x /usr/local/bin/entrypoint.sh
+
+    # entrypoint: 
+    #   /usr/local/bin/entrypoint.sh
       # - ./cron/crontablist:/var/spool/cron/crontabs/root
       
       # - ./config/.bashrc:/root/.bashrc
