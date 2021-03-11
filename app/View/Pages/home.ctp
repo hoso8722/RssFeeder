@@ -54,7 +54,7 @@ default : echo "<td class='icat_o tdCat "; if($chTable[1]==0){echo "hide";} echo
 
 <?php echo h($data['Source']['title']); ?>
 </a>
-<?php if($chTable[5]==1) echo '<div style="display: inline;" class="divHitTail"><span class="num">',$data['Source']['total'],'</span><span class="hit">HIT</span></div>';?>
+<?php if($chTable[5]>=1) echo '<div style="display: inline;" class="divHitTail"><span class="num">',$data['Source']['total'],'</span><span class="hit">HIT</span></div>';?>
 <?php if($chTable[6]==1) echo '<span class="spBlog">',$data['Site']['source'],'</span>';?>
 </span>
 <span id="bm_<?php echo $data['Source']['id'];?>" class="starOff"></span>
