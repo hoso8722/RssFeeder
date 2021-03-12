@@ -124,6 +124,7 @@
 
 									<a class="<?php if ($chTable[4] == 1) echo 'ofoff'; ?>" href="<?php echo h($data['Source']['link']); ?>" onClick="clickCount(<?php echo $data['Source']['id']; ?>);" target="_blank">
 
+<<<<<<< HEAD
 										<?php echo h($data['Source']['title']); ?>
 									</a>
 									<?php if ($chTable[5] >= 1) echo '<div style="display: inline;" class="divHitTail"><span class="num">', $data['Source']['total'], '</span><span class="hit">HIT</span></div>'; ?>
@@ -150,3 +151,28 @@
 		</div>
 	</div>
 </div>
+=======
+<?php echo h($data['Source']['title']); ?>
+</a>
+<?php if($chTable[5]>=1) echo '<div style="display: inline;" class="divHitTail"><span class="num">',$data['Source']['total'],'</span><span class="hit">HIT</span></div>';?>
+<?php if($chTable[6]==1) echo '<span class="spBlog">',$data['Site']['source'],'</span>';?>
+</span>
+<span id="bm_<?php echo $data['Source']['id'];?>" class="starOff"></span>
+</td>
+<td class="hbar" ><?php echo $data['Source']['total']; ?></td>
+<td class="tdHit <?php if($chTable[2]==0)echo 'hide';?>">
+<div class="progress">
+<div class="bar" style="width: <?php echo (round(($data['Source']['total'] / $hr_data), 2) * 100) ;?>%"></div>
+</div>
+</td>
+<td class="ss tdBlog <?php if($chTable[3]==0)echo 'hide';?>"><?php echo $this->Html->link($data['Site']['source'], '/blog/index/'.$data['Site']['id']); ?></td>
+<td class="filter checkOff"></td>
+</tr>
+<?php $i++; } ?>
+</tbody>
+</table>
+<a href="#"><i class='icon-upload'></i>ページ上部へ</a>	</div>
+<div class="tab-pane fade <?php if($top==2)echo 'in active'?>" id="RssFeed">
+</div>	</div>
+</div>
+>>>>>>> 468e57615e8d7c11c577dc0292cd849ab52325f7
