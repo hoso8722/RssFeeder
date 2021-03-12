@@ -123,7 +123,6 @@
 								<span class="tdDiv">
 
 									<a class="<?php if ($chTable[4] == 1) echo 'ofoff'; ?>" href="<?php echo h($data['Source']['link']); ?>" onClick="clickCount(<?php echo $data['Source']['id']; ?>);" target="_blank">
-
 										<?php echo h($data['Source']['title']); ?>
 									</a>
 									<?php if ($chTable[5] >= 1) echo '<div style="display: inline;" class="divHitTail"><span class="num">', $data['Source']['total'], '</span><span class="hit">HIT</span></div>'; ?>
