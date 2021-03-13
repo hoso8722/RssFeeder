@@ -48,20 +48,34 @@ class DailysController extends AppController
 	public function rank($year, $month, $day)
 	{
 		if (checkdate($month, $day, $year)) {
-			$thisday = date('Y-m-d', mktime(0, 0, 0, $month, $day, $year));
+			$day_start = date('Y-m-d H:i:s', mktime(0, 0, 0, $month, $day, $year));
+			$day_end   = date('Y-m-d H:i:s', mktime(23, 59, 59, $month, $day, $year));
+
 			$this->set('thisday', date('Y年n月j日', mktime(0, 0, 0, $month, $day, $year)));
 
 			$this->set('yesterday', date('Y/n/j', mktime(0, 0, 0, $month, $day, $year) - 3600 * 24));
 
 			$this->set('tommorow', date('Y/n/j', mktime(0, 0, 0, $month, $day, $year) + 3600 * 24));
 
-			//$datas = $this->Source->find
-			//$datas = $this->Source->find('all', array('conditions' => array('date(`Source.created`)' => $thisday), 'order' => array('Source.total' => 'desc'), 'limit' => 300));
-			//pr($this->Source->getDataSource()->getLog());
-			//$this->set('datas', $datas);
+			$params = array(
+				'conditions' => array(
+					'Source.created BETWEEN ? AND ?' => array($day_start, $day_end)
+				),
+				'order' => array(
+					'Source.total' => 'desc'
+				),
+				'limit' => 300
+			);
+			$datas = $this->Source->find('all', $params);
+			pr($this->Source->getDataSource()->getLog());
+			// 'all', array(
+			// 	'conditions' => array(
+			// 		'date(`Source.created`)' => $current_day), 'order' => array('Source.total' => 'desc'), 'limit' => 300));
 
-			//$max = $this->getMax($datas);
-			//$this->set('h_data', $max);
+			$this->set('datas', $datas);
+
+			$max = $this->getMax($datas);
+			$this->set('h_data', $max);
 
 			return;
 		}
