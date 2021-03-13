@@ -1,16 +1,11 @@
 <?php
-// echo $this->Html->script('debug/jquery-1.7.2.js');
-// echo $this->Html->script('bootstrap.js'); 
-// echo $this->Html->script('bootstrap-datepicker.js'); 
-// echo $this->Html->script('Cookie.js'); 
-// echo $this->Html->script('jquery.dataTables.js'); 
-// echo $this->Html->script('jquery.powertip-1.1.0.js'); 
-// echo $this->Html->script('DT_bootstrap.js'); 
-
-// echo $this->Html->script('all.js');
-// echo $this->Html->script('static.js');
-
-echo $this->Html->script('combine.min.js');
+if (env('HTTP_HOST') == 'localhost') {
+	echo $this->Html->script('debug/jquery-1.7.2.js');
+	echo $this->Html->script('all.js');
+	echo $this->Html->script('static.js');
+} else {
+	echo $this->Html->script('combine.min.js');
+}
 ?>
 
 <script type="text/javascript">

@@ -37,7 +37,7 @@
             "oriented": 1
         };
     </script>
-    <script type="text/javascript" src="http://js1.nend.net/js/nendAdLoader.js"></script>
+    <script type="text/javascript" src="https://js1.nend.net/js/nendAdLoader.js"></script>
 </head>
 
 <body data-spy="scroll" data-target=".bs-docs-sidebar">
