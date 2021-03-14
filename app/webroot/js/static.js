@@ -89,7 +89,7 @@ $(function () {
 
 });
 function clickCount(id) {
-	var url = "http://2chmatomeru.info/count/up";
+	var url = "https://2chmatomeru.info/count/up";
 	var data = encodeURIComponent(id);
 	url += '/' + data;
 	getFile(url);
