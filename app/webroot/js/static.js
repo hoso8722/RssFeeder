@@ -260,11 +260,23 @@ $(function () {
 		initDisp(true);
 	}
 
+	function changeChTable(num, value) {
+		var cMgr = new H_CookieManager();
+		var str = cMgr.getCookie('set[chTable]');
+		var arr = str.split('.');
+		arr[num] = value;
+		str = arr.join('.');
+	}
+
 	$('#ad').toggle(
 		function () {
 			$(this).removeClass('btn-inverse').addClass('btn-primary').text('表示フィルタOFF');
 			$("tr.sdn > td.filter").addClass("checkOn").removeClass("checkOff");
 			$('tr.sdn').removeClass('sdn');
+			if ($('#thFilter').hasClass('hide')) {
+				changeChTable(7, 1);
+				switchFilter(true);
+			}
 		},
 		function () {
 			$(this).removeClass('btn-primary').addClass('btn-inverse').text('表示フィルタ ＯＮ');
@@ -387,7 +399,7 @@ $(function () {
 			$('#navTable').fadeOut();
 			$(this).removeClass('btn-primary').addClass('btn-inverse');
 		});
-	$('#liDate,#liCat,#liHit,#liBlog,#liOver,#liHitHead,#liBlogTail').live('click', function () {
+	$('#liDate,#liCat,#liHit,#liBlog,#liOver,#liHitHead,#liBlogTail,#liFilter').live('click', function () {
 		var cMgr = new H_CookieManager();
 		var str = cMgr.getCookie('set[chTable]');
 		var arr = str.split('.');
@@ -465,14 +477,34 @@ $(function () {
 				arr[6] = 0;
 			}
 		}
+		if (this.id == 'liFilter') {
+			if (arr[7] == 1) {
+				arr[7] = 0; //非表示にする
+				switchFilter(false);
+			} else {
+				arr[7] = 1; //表示する
+				switchFilter(true);
+			}
+		}
 
 		str = arr.join('.');
 		cMgr.setCookie("set[chTable]", str, 3600 * 24 * 5000, '/');
 
 	});
+
+	function switchFilter(bool) {
+		if (bool) {
+			$('#liFilter').removeClass('btn-inverse').addClass('btn-info').text('フィルター列を非表示');
+			$('#thFilter, .filter').removeClass('hide');
+		} else {
+			$('#liFilter').removeClass('btn-info').addClass('btn-inverse').text('フィルター列を表示');
+			$('#thFilter, .filter').addClass('hide');
+		}
+	}
+
 	$('#liSmart').click(function () {
 		var cMgr = new H_CookieManager();
-		cMgr.setCookie("set[chTable]", '0.0.0.0.1.1.1', 3600 * 24 * 5000, '/');
+		cMgr.setCookie("set[chTable]", '0.0.0.0.1.1.1.1', 3600 * 24 * 5000, '/');
 		$('#liDate').removeClass('btn-info').addClass('btn-inverse').text('日時を非表示');
 		$('#thDate,.tdDate').addClass('hide');
 		$('#liCat').removeClass('btn-info').addClass('btn-inverse').text('カテゴリを非表示');
@@ -487,10 +519,11 @@ $(function () {
 		$('div.divHitTail').remove();
 		switchHit(1);
 		switchBlog();
+		switchFilter(true);
 	});
 	$('#liReset').click(function () {
 		var cMgr = new H_CookieManager();
-		cMgr.setCookie("set[chTable]", '1.1.1.1.1.1.1', 3600 * 24 * 5000, '/');
+		cMgr.setCookie("set[chTable]", '1.1.1.1.1.1.1.1', 3600 * 24 * 5000, '/');
 		$('#liDate').removeClass('btn-inverse').addClass('btn-info').text('日時を表示');
 		$('#thDate,.tdDate').removeClass('hide');
 		$('#liCat').removeClass('btn-inverse').addClass('btn-info').text('カテゴリを表示');
@@ -505,6 +538,7 @@ $(function () {
 		switchHit(1);
 		$('span.spBlog').remove();
 		switchBlog();
+		switchFilter(true);
 		//$('#liBlogTail').removeClass('btn-inverse').addClass('btn-info').text('記事末尾にブログ名を表示');
 		//$('span.spBlog').remove();
 	});
@@ -539,6 +573,9 @@ function switchBlog() {
 
 var cMgr = new H_CookieManager();
 var str = cMgr.getCookie('set[chTable]');
+if (str == undefined) {
+	str = global_chTable
+}
 var arr = str.split('.');
 
 if (arr[0] != 1) {
@@ -562,12 +599,8 @@ if (arr[4] != 1) {
 	if (arr[4] == 0) $('td.tdLink a').removeClass('ofoff');
 }
 if (!($('div').hasClass('divHit')) && !($('div').hasClass('divHitTail'))) {
-	if (arr[5] == 1) {
+	if (arr[5] >= 1) {
 		switchHit(1);
-	} else if (arr[5] == 2) {
-		switchHit(2);
-	} else if (arr[5] == 3) {
-		switchHit(3);
 	}
 }
 if (!($('span').hasClass('spBlog'))) {
@@ -575,4 +608,7 @@ if (!($('span').hasClass('spBlog'))) {
 		switchBlog();
 	}
 }
-
+if (arr[7] != 1) {
+	$('#liFilter').removeClass('btn-info').addClass('btn-inverse').text('フィルター列を非表示');
+	if (arr[7] == 0) $('#thFilter, .filter').addClass('hide');
+}

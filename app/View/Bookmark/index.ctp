@@ -1,6 +1,6 @@
       <div class="span9" >
 <div class="alert alert-info" style="margin:10px">
-<strong>ブックマーク機能は最大300件まで登録できます。</strong><br>
+<strong>ブックマーク機能は最大1000件まで登録できます。</strong><br>
 </div>      
         <ul id="myTab" class="nav nav-tabs">
               <li class="active"><a class="notvisited" href="#home" data-toggle="tab"><p class="brand"><i class="icon-play-circle"></i>ブックマーク一覧</p></a></li>

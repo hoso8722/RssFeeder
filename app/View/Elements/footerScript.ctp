@@ -1,3 +1,7 @@
+<script type="text/javascript">
+	var global_chTable = '<?php echo join(".", $chTable); ?>';
+</script>
+
 <?php
 if (env('HTTP_HOST') == 'localhost') {
 	echo $this->Html->script('debug/jquery-1.7.2.js');
@@ -9,7 +13,8 @@ if (env('HTTP_HOST') == 'localhost') {
 ?>
 
 <script type="text/javascript">
-	initCookie('set[chTable]', '<?php echo join(".", $chTable); ?>');
+	//initialize set[chTable]
+	initCookie('set[chTable]', global_chTable);
 
 	//google Analytics
 	(function(i, s, o, g, r, a, m) {

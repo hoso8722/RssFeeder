@@ -228,19 +228,21 @@ class AppController extends Controller
 				|| (strpos($ua, 'BlackBerry') !== false)
 			) {
 				//SP 
-				$str = null;
-				$str = '0.0.0.0.1.3.1';
+				$str = '0.0.0.0.1.1.1.1';
 				$arrTable = explode('.', $str);
 				$this->set('chTable', $arrTable);
 			} else {
 				//PC
-				$str = null;
-				$str = '1.1.1.1.1.3.1';
+				$str = '1.1.1.1.1.1.1.1';
 				$arrTable = explode('.', $str);
 				$this->set('chTable', $arrTable);
 			}
 		} else {
 			$arrTable = explode('.', $arr['chTable']);
+
+			if (count($arrTable <= 7)) {
+				array_push($arrTable, '1');
+			}
 			$this->set('chTable', $arrTable);
 		}
 
