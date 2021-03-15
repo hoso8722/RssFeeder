@@ -31,7 +31,7 @@
 						<th id="thHit" class="<?php if ($chTable[2] == 0) echo 'hide'; ?>" style="width:10%;">HIT</th>
 						<th class="pbar"></th>
 						<th id="thBlog" class="<?php if ($chTable[3] == 0) echo 'hide'; ?>" style="width:15%;">ブログ</th>
-						<th class="center nosort" style="width:2%;"><i class="icon-filter"></i></th>
+						<th id="thFilter" class="center nosort <?php if ($chTable[7] == 0) echo 'hide'; ?>" style="width:2%;"><i class="icon-filter"></i></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -137,7 +137,7 @@
 								</div>
 							</td>
 							<td class="ss tdBlog <?php if ($chTable[3] == 0) echo 'hide'; ?>"><?php echo $this->Html->link($data['Site']['source'], '/blog/index/' . $data['Site']['id']); ?></td>
-							<td class="filter checkOff"></td>
+							<td class="filter checkOff <?php if ($chTable[7] == 0) echo 'hide'; ?>"></td>
 						</tr>
 					<?php $i++;
 					} ?>

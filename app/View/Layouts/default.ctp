@@ -9,7 +9,7 @@
     <meta name="keywords" content="2ch,２ちゃんねる,まとめ,アンテナ,２ちゃんねるまとめ,2chまとめ" />
     <meta name="copyright" content="Copyright (C) ２ちゃんねるまとめるまとめ" />
     <meta name="author" content="２ちゃんねるまとめるまとめ">
-    <link rel="alternate" type="application/rss+xml" title="RSS2.0" href="http://2chmatomeru.info/entries/index.rss" />
+    <link rel="alternate" type="application/rss+xml" title="RSS2.0" href="https://2chmatomeru.info/entries/index.rss" />
     <!-- Le styles -->
     <?php echo $this->Html->css('all.min.css'); ?>
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
