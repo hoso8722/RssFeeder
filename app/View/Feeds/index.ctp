@@ -25,89 +25,90 @@
                     foreach ($datas as $data) { ?>
                         <tr id='entry_<?php echo $data['Source']['id']; ?>' class="sid_<?php echo $data['Site']['id']; ?>">
                             <td class="cr"><?php echo $data['Source']['created'] ?></td>
-                            <td class="tdDate <?php if ($chTable[0] == 0) echo 'hide'; ?>"><?php echo substr($data['Source']['created'], 10, 6); ?></td> <?php switch ($data['Site']['category']) {
-                                                                                                                                                                case 1:
-                                                                                                                                                                    echo "<td class='icat_v tdCat '";
-                                                                                                                                                                    if ($chTable[1] == 0) {
-                                                                                                                                                                        echo "hide";
-                                                                                                                                                                    }
-                                                                                                                                                                    echo $data['Site']['category'], '</td>';
-                                                                                                                                                                    break;
-                                                                                                                                                                case 2:
-                                                                                                                                                                    echo "<td class='icat_n tdCat '";
-                                                                                                                                                                    if ($chTable[1] == 0) {
-                                                                                                                                                                        echo "hide";
-                                                                                                                                                                    }
-                                                                                                                                                                    echo $data['Site']['category'], '</td>';
-                                                                                                                                                                    break;
-                                                                                                                                                                case 3:
-                                                                                                                                                                    echo "<td class='icat_e tdCat '";
-                                                                                                                                                                    if ($chTable[1] == 0) {
-                                                                                                                                                                        echo "hide";
-                                                                                                                                                                    }
-                                                                                                                                                                    echo $data['Site']['category'], '</td>';
-                                                                                                                                                                    break;
-                                                                                                                                                                case 4:
-                                                                                                                                                                    echo "<td class='icat_s tdCat '";
-                                                                                                                                                                    if ($chTable[1] == 0) {
-                                                                                                                                                                        echo "hide";
-                                                                                                                                                                    }
-                                                                                                                                                                    echo $data['Site']['category'], '</td>';
-                                                                                                                                                                    break;
-                                                                                                                                                                case 5:
-                                                                                                                                                                    echo "<td class='icat_a tdCat '";
-                                                                                                                                                                    if ($chTable[1] == 0) {
-                                                                                                                                                                        echo "hide";
-                                                                                                                                                                    }
-                                                                                                                                                                    echo $data['Site']['category'], '</td>';
-                                                                                                                                                                    break;
-                                                                                                                                                                case 6:
-                                                                                                                                                                    echo "<td class='icat_g tdCat '";
-                                                                                                                                                                    if ($chTable[1] == 0) {
-                                                                                                                                                                        echo "hide";
-                                                                                                                                                                    }
-                                                                                                                                                                    echo $data['Site']['category'], '</td>';
-                                                                                                                                                                    break;
-                                                                                                                                                                case 7:
-                                                                                                                                                                    echo "<td class='icat_r tdCat '";
-                                                                                                                                                                    if ($chTable[1] == 0) {
-                                                                                                                                                                        echo "hide";
-                                                                                                                                                                    }
-                                                                                                                                                                    echo $data['Site']['category'], '</td>';
-                                                                                                                                                                    break;
-                                                                                                                                                                case 8:
-                                                                                                                                                                    echo "<td class='icat_h tdCat ";
-                                                                                                                                                                    if ($chTable[1] == 0) {
-                                                                                                                                                                        echo "hide";
-                                                                                                                                                                    }
-                                                                                                                                                                    echo "'>", $data['Site']['category'], '</td>';
-                                                                                                                                                                    break;
-                                                                                                                                                                case 9:
-                                                                                                                                                                    echo "<td class='icat_l tdCat ";
-                                                                                                                                                                    if ($chTable[1] == 0) {
-                                                                                                                                                                        echo "hide";
-                                                                                                                                                                    }
-                                                                                                                                                                    echo "'>", $data['Site']['category'], '</td>';
-                                                                                                                                                                    break;
-                                                                                                                                                                case 0:
-                                                                                                                                                                    echo "<td class='icat_o tdCat '";
-                                                                                                                                                                    if ($chTable[1] == 0) {
-                                                                                                                                                                        echo "hide";
-                                                                                                                                                                    }
-                                                                                                                                                                    echo $data['Site']['category'], '</td>';
-                                                                                                                                                                    break;
-                                                                                                                                                                default:
-                                                                                                                                                                    echo "<td class='icat_o tdCat '";
-                                                                                                                                                                    if ($chTable[1] == 0) {
-                                                                                                                                                                        echo "hide";
-                                                                                                                                                                    }
-                                                                                                                                                                    echo $data['Site']['category'], '</td>';
-                                                                                                                                                                    break;
-                                                                                                                                                            } ?>
+                            <td class="tdDate <?php if ($chTable[0] == 0) echo 'hide'; ?>"><?php echo substr($data['Source']['created'], 10, 6); ?></td>
+                            <?php switch ($data['Site']['category']) {
+                                case 1:
+                                    echo "<td class='icat_v tdCat '";
+                                    if ($chTable[1] == 0) {
+                                        echo "hide";
+                                    }
+                                    echo $data['Site']['category'], '</td>';
+                                    break;
+                                case 2:
+                                    echo "<td class='icat_n tdCat '";
+                                    if ($chTable[1] == 0) {
+                                        echo "hide";
+                                    }
+                                    echo $data['Site']['category'], '</td>';
+                                    break;
+                                case 3:
+                                    echo "<td class='icat_e tdCat '";
+                                    if ($chTable[1] == 0) {
+                                        echo "hide";
+                                    }
+                                    echo $data['Site']['category'], '</td>';
+                                    break;
+                                case 4:
+                                    echo "<td class='icat_s tdCat '";
+                                    if ($chTable[1] == 0) {
+                                        echo "hide";
+                                    }
+                                    echo $data['Site']['category'], '</td>';
+                                    break;
+                                case 5:
+                                    echo "<td class='icat_a tdCat '";
+                                    if ($chTable[1] == 0) {
+                                        echo "hide";
+                                    }
+                                    echo $data['Site']['category'], '</td>';
+                                    break;
+                                case 6:
+                                    echo "<td class='icat_g tdCat '";
+                                    if ($chTable[1] == 0) {
+                                        echo "hide";
+                                    }
+                                    echo $data['Site']['category'], '</td>';
+                                    break;
+                                case 7:
+                                    echo "<td class='icat_r tdCat '";
+                                    if ($chTable[1] == 0) {
+                                        echo "hide";
+                                    }
+                                    echo $data['Site']['category'], '</td>';
+                                    break;
+                                case 8:
+                                    echo "<td class='icat_h tdCat ";
+                                    if ($chTable[1] == 0) {
+                                        echo "hide";
+                                    }
+                                    echo "'>", $data['Site']['category'], '</td>';
+                                    break;
+                                case 9:
+                                    echo "<td class='icat_l tdCat ";
+                                    if ($chTable[1] == 0) {
+                                        echo "hide";
+                                    }
+                                    echo "'>", $data['Site']['category'], '</td>';
+                                    break;
+                                case 0:
+                                    echo "<td class='icat_o tdCat '";
+                                    if ($chTable[1] == 0) {
+                                        echo "hide";
+                                    }
+                                    echo $data['Site']['category'], '</td>';
+                                    break;
+                                default:
+                                    echo "<td class='icat_o tdCat '";
+                                    if ($chTable[1] == 0) {
+                                        echo "hide";
+                                    }
+                                    echo $data['Site']['category'], '</td>';
+                                    break;
+                            } ?>
                             <td class="tdLink">
                                 <span class="tdDiv">
 
-                                    <a class="<?php if ($chTable[4] == 1) echo 'ofoff'; ?>" href="<?php echo h($data['Source']['link']); ?>" onClick="clickCount(<?php echo $data['Source']['id']; ?>);" target="_blank">
+                                    <a class="<?php if ($chTable[4] == 1) echo 'ofoff'; ?>" <a class="<?php if ($chTable[4] == 1) echo 'ofoff'; ?>" href="<?php echo $this->Html->url('/count/update/' . $data['Source']['id'], true); ?>" rel="noopener" target="_blank">
 
                                         <?php echo h($data['Source']['title']); ?>
                                     </a>
