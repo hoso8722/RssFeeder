@@ -1,9 +1,9 @@
 <thead>
     <tr>
-        <th id="thDate" class="<?php if ($chTable[0] == 0) echo 'hide'; ?>" style="width:10%;">日時</th>
+        <th id="thDate" class="<?php if ($chTable[0] == 0) echo 'hide'; ?>" style="width:5%;">日時</th>
         <th class="dbar"></th>
         <th id="thCat" class="center <?php if ($chTable[1] == 0) echo 'hide'; ?>" style="width:2%;"><i class="icon-tags"></i></th>
-        <th id="title" style="width:61%;">タイトル</th>
+        <th id="title" style="width:66%;">タイトル</th>
         <th id="thHit" class="<?php if ($chTable[2] == 0) echo 'hide'; ?>" style="width:10%;">HIT</th>
         <th class="pbar"></th>
         <th id="thBlog" class="<?php if ($chTable[3] == 0) echo 'hide'; ?>" style="width:15%;">ブログ</th>
@@ -13,9 +13,9 @@
 <tbody>
     <?php $i = 0;
     foreach ($datas as $data) { ?>
-        <tr class="sid_<?php echo $data['Site']['id']; ?>">
+        <tr class="sid_<?php echo $data['Site']['id'] . ' '; ?><?php echo (($i % 2) == 0) ? 'odd' : 'even'; ?>">
             <td class="cr"><?php echo $data['Source']['created'] ?></td>
-            <td class="tdDate <?php if ($chTable[0] == 0) echo 'hide'; ?>"><?php echo h(substr(str_ireplace("-", "/", $data['Source']['created']), 2, 14)); ?></td>
+            <td class="tdDate <?php if ($chTable[0] == 0) echo 'hide'; ?>"><?php echo substr($data['Source']['created'], 10, 6); ?></td>
             <?php switch ($data['Site']['category']) {
                 case 1:
                     echo "<td class='icat_v tdCat ";
@@ -98,7 +98,7 @@
             <td class="tdLink">
                 <span class="tdDiv">
 
-                    <a class="<?php if ($chTable[4] == 1) echo 'ofoff'; ?>" <a class="<?php if ($chTable[4] == 1) echo 'ofoff'; ?>" href="<?php echo $this->Html->url('/count/update/' . $data['Source']['id'], true); ?>" rel="noopener" target="_blank">
+                    <a class="<?php if ($chTable[4] == 1) echo 'ofoff'; ?>" href="<?php echo $this->Html->url('/count/update/' . $data['Source']['id'], true); ?>" rel="noopener" target="_blank">
 
                         <?php echo h($data['Source']['title']); ?>
                     </a>

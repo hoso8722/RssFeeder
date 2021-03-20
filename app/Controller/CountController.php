@@ -3,20 +3,53 @@ App::uses('AppController', 'Controller');
 
 class CountController extends AppController
 {
+	public $name = 'Counts';
 
-	var $name = 'Counts';
+	public $uses = array('Source', 'Site');
 
-	var $uses = array('Source', 'Site');
-
-	var $components = array('RequestHandler');
+	public $components = array('Cookie', 'RequestHandler');
 
 	function update($id)
 	{
 		if (is_numeric($id)) {
+			$this->Cookie->name = '2chmatomeru';
+			// $this->Cookie->time = '1 month';  // または '1 hour'
+			// $this->Cookie->secure = false;
+			$encrypt = false;
+			$expires = '1 month';
+			$key = 'histories';
+			//var_dump($this->Cookie->read($key));
+			if ($this->Cookie->check($key)) {
+				$value = $this->Cookie->read($key);
+				//var_dump($value);
+				$max = 100;
+				if (substr_count($value, 'd') >= $max - 1) {
+					$index = strpos($value, 'd');
+					$value = substr($value, $index + 1, strlen($value) - $index);
+				}
+				if (strpos($value, $id) === false) {
+					$new_value = $value . 'd' . $id;
+					//print($value);
+					$this->Cookie->write($key, $new_value, $encrypt, $expires);
+					//print($new_value);
+				} else if (strpos($value, $id) >= 0) {
+					$array = explode('d', $value);
+					$index = array_search($id, $array);
+					array_splice($array, $index, 1);
+					array_push($array, strval($id));
+					$string = implode('d', $array);
+					$this->Cookie->write($key, $string, $encrypt, $expires);
+				}
+			} else {
+				//Initialize Cookie and write first ID
+				$this->Cookie->write($key, $id, $encrypt, $expires);
+			}
+
 			$url = $this->_countup($id);
 		}
 		//print($url);
-		//$this->autoRender = false;
+		$this->autoRender = false;
+
 		return $this->redirect($url);
 	}
 

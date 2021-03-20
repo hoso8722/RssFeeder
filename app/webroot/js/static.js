@@ -88,12 +88,7 @@ $(function () {
 
 
 });
-function clickCount(id) {
-	var url = "https://2chmatomeru.info/count/up";
-	var data = encodeURIComponent(id);
-	url += '/' + data;
-	getFile(url);
-}
+
 function xhr(xmlhttp) {
 	var xmlhttp = false;
 	if (typeof ActiveXObject != "undefined") { /* IE5, IE6 */
@@ -132,6 +127,7 @@ function checkRss(xmlURL) {
 	xmlhttp.send(null);
 
 }
+
 function getFile(url) {
 	var req;
 	if (window.XMLHttpRequest) {
@@ -153,6 +149,34 @@ function getFile(url) {
 	req.send('');
 	return;
 }
+
+function execAjax(url) {
+
+	$.ajax({
+		url: url,
+		async: false,
+		type: "POST",
+		data: {
+			history: str
+		},
+		dataType: "html",
+		evalScript: true,
+		error: function (jqXHR, textStatus, errorThrown) { },
+		success: function (data, textStatus) {
+			console.log(textStatus);
+			if (textStatus == 'success') {
+
+				$("div#history").html(data);
+				return;
+			}
+			// このスコープで処理を行う必要があれば実装する
+
+		}
+	});
+	// resultに格納された結果を元に何かしらの処理を実装する
+
+}
+
 function initCookie(name, value) {
 	var cMgr = new H_CookieManager();
 	if (!cMgr.getCookie(name)) {
@@ -382,10 +406,10 @@ $(function () {
 		var cMgr = new H_CookieManager();
 		var str = cMgr.getCookie('set[ocmenu]');
 		if (str == 1) {
-			$(this).text('MENUを開く').next('div').fadeOut('fast');
+			$(this).html('<div class="icon-chevron-up"></div>').next('div').fadeOut('fast');
 			cMgr.setCookie("set[ocmenu]", '0', 3600 * 24 * 5000, '/');
 		} else if (str == 0) {
-			$(this).text('MENUを閉じる').next('div').fadeIn('fast');
+			$(this).html('<div class="icon-chevron-down"></div>').next('div').fadeIn('fast');
 			cMgr.setCookie("set[ocmenu]", '1', 3600 * 24 * 5000, '/');
 		}
 	});
@@ -427,11 +451,11 @@ $(function () {
 		}
 		if (this.id == 'liHit') {
 			if (arr[2] == 1) {
-				$(this).removeClass('btn-info').addClass('btn-inverse').text('HITを非表示');
+				$(this).removeClass('btn-info').addClass('btn-inverse').text('HITバーを非表示');
 				$('#thHit,.tdHit').addClass('hide');
 				arr[2] = 0;
 			} else if (arr[2] == 0) {
-				$(this).removeClass('btn-inverse').addClass('btn-info').text('HITを表示');
+				$(this).removeClass('btn-inverse').addClass('btn-info').text('HITバーを表示');
 				$('#thHit,.tdHit').removeClass('hide');
 				arr[2] = 1;
 			}
@@ -509,7 +533,7 @@ $(function () {
 		$('#thDate,.tdDate').addClass('hide');
 		$('#liCat').removeClass('btn-info').addClass('btn-inverse').text('カテゴリを非表示');
 		$('#thCat,.tdCat').addClass('hide');
-		$('#liHit').removeClass('btn-info').addClass('btn-inverse').text('HITを非表示');
+		$('#liHit').removeClass('btn-info').addClass('btn-inverse').text('HITバーを非表示');
 		$('#thHit,.tdHit').addClass('hide');
 		$('#liBlog').removeClass('btn-info').addClass('btn-inverse').text('ブログを非表示');
 		$('#thBlog,.tdBlog').addClass('hide');
@@ -528,7 +552,7 @@ $(function () {
 		$('#thDate,.tdDate').removeClass('hide');
 		$('#liCat').removeClass('btn-inverse').addClass('btn-info').text('カテゴリを表示');
 		$('#thCat,.tdCat').removeClass('hide');
-		$('#liHit').removeClass('btn-inverse').addClass('btn-info').text('HITを表示');
+		$('#liHit').removeClass('btn-inverse').addClass('btn-info').text('HITバーを表示');
 		$('#thHit,.tdHit').removeClass('hide');
 		$('#liBlog').removeClass('btn-inverse').addClass('btn-info').text('ブログを表示');
 		$('#thBlog,.tdBlog').removeClass('hide');
@@ -587,7 +611,7 @@ if (arr[1] != 1) {
 	if (arr[1] == 0) $('#thCat,.tdCat').addClass('hide');
 }
 if (arr[2] != 1) {
-	$('#liHit').removeClass('btn-info').addClass('btn-inverse').text('HITを非表示');
+	$('#liHit').removeClass('btn-info').addClass('btn-inverse').text('HITバーを非表示');
 	if (arr[2] == 0) $('#thHit,.tdHit').addClass('hide');
 }
 if (arr[3] != 1) {

@@ -1,12 +1,21 @@
 <div class="span9">
 	<?php echo $this->element('alert'); ?>
 	<ul id="myTab" class="nav nav-tabs">
-		<li <?php if ($top == 0) echo 'class="active"' ?>><a class="notvisited" href="#home" data-toggle="tab">
+		<li <?php if ($top == 0) echo 'class="active"' ?>>
+			<a class="notvisited" href="#home" data-toggle="tab">
 				<p class="brand"><i class="icon-play-circle"></i>新着記事</p>
-			</a></li>
-		<li <?php if ($top == 1 or $top == 2) echo 'class="active"' ?>><a class="notvisited" href="#profile" data-toggle="tab">
+			</a>
+		</li>
+		<li <?php if ($top == 1 or $top == 2) echo 'class="active"' ?>>
+			<a class="notvisited" href="#profile" data-toggle="tab">
 				<p class="brand"><i class="icon-play-circle"></i>注目記事</p>
-			</a></li>
+			</a>
+		</li>
+		<li>
+			<a class="notvisited" href="#history" data-toggle="tab" id="getHistory">
+				<p class="brand"><i class="icon-play-circle"></i>閲覧履歴</p>
+			</a>
+		</li>
 	</ul>
 	<?php echo $this->element('toolbar'); ?>
 	<div id="myTabContent" class="tab-content">
@@ -145,7 +154,8 @@
 			</table>
 			<a href="#"><i class='icon-upload'></i>ページ上部へ</a>
 		</div>
-		<div class="tab-pane fade <?php if ($top == 2) echo 'in active' ?>" id="RssFeed">
+		<div class="tab-pane fade" id="history">
+
 		</div>
 	</div>
 </div>

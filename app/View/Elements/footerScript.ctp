@@ -16,6 +16,13 @@ if (env('HTTP_HOST') == 'localhost') {
 	//initialize set[chTable]
 	initCookie('set[chTable]', global_chTable);
 
+	$('#getHistory').click(function() {
+		// URLを生成する
+		var url = "<?= $this->Html->url(array('controller' => 'history', 'action' => 'table')) ?>";
+		// Ajaxの処理を呼び出す
+		execAjax(url);
+	});
+
 	//google Analytics
 	(function(i, s, o, g, r, a, m) {
 		i['GoogleAnalyticsObject'] = r;

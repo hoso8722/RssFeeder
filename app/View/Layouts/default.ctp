@@ -113,9 +113,9 @@
                     </ul>
                     <?php
                     if ($ocmenu == 0) {
-                        echo "<button id='ocmenu'>MENUを開く</button><div id='menu' style='display:none;'>";
+                        echo "<button id='ocmenu'><div class='icon-chevron-up'></div></button><div id='menu' style='display:none;'>";
                     } else {
-                        echo "<button id='ocmenu'>MENUを閉じる</button><div id='menu' style='display:block;'>";
+                        echo "<button id='ocmenu'><div class='icon-chevron-down'></div></button><div id='menu' style='display:block;'>";
                     }
                     ?>
                     <div class="lead"></div>
