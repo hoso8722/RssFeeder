@@ -163,7 +163,6 @@ function execAjax(url) {
 		evalScript: true,
 		error: function (jqXHR, textStatus, errorThrown) { },
 		success: function (data, textStatus) {
-			console.log(textStatus);
 			if (textStatus == 'success') {
 
 				$("div#history").html(data);

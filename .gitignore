@@ -19,7 +19,6 @@ compiler.jar
 empty
 /data/*
 null
-all.js
 combine.js
 /cron
 /node_modules
