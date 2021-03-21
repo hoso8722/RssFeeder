@@ -152,7 +152,7 @@ function getFile(url) {
 
 function execAjax(url) {
 
-	$.ajax({
+	jQuery.ajax({
 		url: url,
 		async: false,
 		type: "POST",
