@@ -5,6 +5,7 @@
 /app/vendors
 /app/plugins
 /app/tmp/*
+#/app/View/Elements/alert.ctp
 /app/webroot/js/minify
 /app/webroot/js/debug
 compiler.jar
@@ -19,7 +20,6 @@ compiler.jar
 empty
 /data/*
 null
-all.js
 combine.js
 /cron
 /node_modules

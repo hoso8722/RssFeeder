@@ -1,4 +1,4 @@
 <div class="alert alert-error">
     <button type="button" class="close" data-dismiss="alert">×</button>
-    httpsへの移行が完了しました
+    閲覧履歴機能を追加しました。
 </div>
