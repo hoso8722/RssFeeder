@@ -3,13 +3,15 @@
 </script>
 
 <?php
-// if (!env('HTTP_HOST') == 'localhost') {
-echo $this->Html->script('jquery-1.7.2.js');
-echo $this->Html->script('all.js');
-echo $this->Html->script('static.js');
-// } else {
-// 	echo $this->Html->script('combine.min.js');
-// }
+$switch_js = Configure::read("switch_js");
+
+if ($switch_js) {
+	echo $this->Html->script('jquery-1.7.2.js');
+	echo $this->Html->script('all.js');
+	echo $this->Html->script('static.js');
+} else {
+	echo $this->Html->script('combine.min.js');
+}
 ?>
 
 <script type="text/javascript">

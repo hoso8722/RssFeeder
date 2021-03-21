@@ -1,6 +1,7 @@
 /Config
 /app/Config/database.*
 /app/Config/core.php
+/app/Config/myConfig.php
 /app/lib
 /app/vendors
 /app/plugins
