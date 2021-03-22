@@ -2,7 +2,7 @@
   <ul id="myTab" class="nav nav-tabs">
     <li class="active">
       <a class="notvisited" href="#home" data-toggle="tab">
-        <p class="brand"><i class="icon-play-circle"></i><?php echo ($thisday) ?>の記事全件(<?php echo (count($datas)); ?>件)</p>
+        <p class="brand"><i class="icon-play-circle"></i><?php echo ($thisday); ?>の記事全件(<?php echo (count($datas)); ?>件)</p>
       </a>
     </li>
   </ul>

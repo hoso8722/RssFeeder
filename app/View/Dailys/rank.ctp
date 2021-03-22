@@ -1,7 +1,8 @@
 <div class="span9">
   <ul id="myTab" class="nav nav-tabs">
-    <li class="active"><a class="notvisited" href="#home" data-toggle="tab">
-        <p class="brand"><i class="icon-play-circle"></i><?php echo ($thisday) ?>のランキング300</p>
+    <li class="active">
+      <a class="notvisited" href="#home" data-toggle="tab">
+        <p class="brand"><i class="icon-play-circle"></i><?php echo ($thisday); ?>のランキング300</p>
       </a>
     </li>
   </ul>

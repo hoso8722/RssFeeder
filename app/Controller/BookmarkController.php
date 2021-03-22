@@ -16,14 +16,14 @@ class BookmarkController extends AppController
 			$cookie = $_COOKIE['set'];
 			if (empty($cookie['bookmark'])) {
 				$this->set('datas', array());
-				$this->set('h_data', null);
+				$this->set('hr_data', null);
 				return;
 			}
 			$arr = explode('.', $cookie['bookmark']);
 			for ($i = 0, $len = count($arr); $i < $len; $i++) {
 				if (!is_numeric($arr[$i])) {
 					$this->set('datas', array());
-					$this->set('h_data', null);
+					$this->set('hr_data', null);
 					return;
 				}
 			}
@@ -36,7 +36,7 @@ class BookmarkController extends AppController
 			$this->set('datas', $datas);
 
 			$max = $this->getMax($datas);
-			$this->set('h_data', $max);
+			$this->set('hr_data', $max);
 		}
 	}
 }

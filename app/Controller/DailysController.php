@@ -40,7 +40,7 @@ class DailysController extends AppController
 			pr($this->Source->getDataSource()->getLog());
 			$this->set('datas', $datas);
 			$max = $this->getMax($datas);
-			$this->set('h_data', $max);
+			$this->set('hr_data', $max);
 			return;
 		}
 	}
@@ -75,7 +75,7 @@ class DailysController extends AppController
 			$this->set('datas', $datas);
 
 			$max = $this->getMax($datas);
-			$this->set('h_data', $max);
+			$this->set('hr_data', $max);
 
 			return;
 		}
@@ -96,7 +96,7 @@ class DailysController extends AppController
 		$this->set('datas', $datas);
 
 		$max = $this->getMax($datas);
-		$this->set('h_data', $max);
+		$this->set('hr_data', $max);
 		return;
 	}
 }
