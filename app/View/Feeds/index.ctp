@@ -1,13 +1,12 @@
 <div class="span9">
     <ul id="myTab" class="nav nav-tabs">
         <li class="active"><a class="notvisited" href="#home" data-toggle="tab">
-                <p class="brand"><i class="icon-play-circle"></i>２ちゃんねるまとめるまとめ | RSS</p>
+                <p class="brand"><i class="icon-play-circle"></i><?php echo $site_name; ?> | 注目</p>
             </a></li>
     </ul>
-    <?php echo $this->element('toolbar'); ?>
     <div id="myTabContent" class="tab-content">
         <div class="tab-pane fade in active" id="home">
-            <table cellpadding="0" cellspacing="0" border="0" class="table table-bordered" id="latest">
+            <table cellpadding="0" cellspacing="0" border="0" class="table table-bordered" id="">
                 <thead>
                     <tr>
                         <th id="thDate" class="<?php if ($chTable[0] == 0) echo 'hide'; ?>" style="width:5%;">日時</th>
@@ -23,7 +22,9 @@
                 <tbody>
                     <?php $i = 0;
                     foreach ($datas as $data) { ?>
-                        <tr id='entry_<?php echo $data['Source']['id']; ?>' class="sid_<?php echo $data['Site']['id']; ?>">
+                        <tr id='entry_<?php echo $data['Source']['id']; ?>' class="sid_<?php echo $data['Site']['id']; ?> <?php if ($data['Source']['id'] == $entryID) {
+                                                                                                                                echo 'entry';
+                                                                                                                            } ?> ">
                             <td class="cr"><?php echo $data['Source']['created'] ?></td>
                             <td class="tdDate <?php if ($chTable[0] == 0) echo 'hide'; ?>"><?php echo substr($data['Source']['created'], 10, 6); ?></td>
                             <?php switch ($data['Site']['category']) {

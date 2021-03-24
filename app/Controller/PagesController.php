@@ -82,7 +82,7 @@ class PagesController extends AppController
 		$this->set('sites', $sites);
 
 		//Get referer set count
-		$pattern = '{^http[s]?://([^:/]+)}';
+		$pattern = '{^https?://([^:/]+)}';
 		preg_match($pattern, $this->referer(), $matches);
 		$this->set('referer', $matches);
 
