@@ -32,17 +32,7 @@ class FeedShell extends AppShell
 {
 	var $uses = array('Site','Source');
 	
-	function resetRssCount()
-	{
-                $this->Site->unbindModel(array('hasMany' => array('Source')));
-                $this->Site->updateAll(
-                        array(
-                		'`Site`.`rsscount`' => 0,
-      		                '`Site`.`count`' => 0,
-                	)
-        	);
-	}	
-	function setRssID()
+	function setRssId()
 	{
 		$all = $this->args[0];
 		
@@ -84,6 +74,7 @@ class FeedShell extends AppShell
 			$this->Site->updateAll(
 				array(
 					'`Site`.`rsscount`' => 0,
+					'`Site`.`count`' => 0,
 				)
 			);
 		}		
@@ -107,7 +98,7 @@ class FeedShell extends AppShell
 			return $i;
 		}
 		$num = $this->args[0];
-		if(0 <= $num && $num < 310)
+		if(0 <= $num && $num < 300)
 		{
 			//$num = $this->args[0];
 			$this->Site->recursive = 0;
