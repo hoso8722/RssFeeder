@@ -22,7 +22,7 @@
  */
 
 App::uses('Controller', 'Controller');
-
+App::import('Vendor','Mobile_Detect');
 /**
  * Application Controller
  *
@@ -221,12 +221,10 @@ class AppController extends Controller
 		}
 		if (empty($arr['chTable'])) {
 			//PC　or SP 振り分け
+			$detect = new Mobile_Detect;
+
 			$ua = $_SERVER['HTTP_USER_AGENT'];
-			if ((strpos($ua, 'iPhone') !== false) //iphoneか、
-				|| ((strpos($ua, 'Android') !== false) && (strpos($ua, 'Mobile') !== false)) //またはAndroidMobile端末、
-				|| (strpos($ua, 'Windows Phone') !== false)
-				|| (strpos($ua, 'BlackBerry') !== false)
-			) {
+			if ( $detect->isMobile() && !$detect->isTablet() ) {
 				//SP 
 				$str = '0.0.0.0.1.1.1.1';
 				$arrTable = explode('.', $str);

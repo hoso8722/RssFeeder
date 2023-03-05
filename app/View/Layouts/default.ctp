@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php
+$detect = new Mobile_Detect;
+if($detect->isMobile()){
+    echo '<!-- Mobile device -->';
+}else{
+    echo '<!-- PC device -->';
+}
+?>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>２ちゃんねるまとめるまとめ</title>
