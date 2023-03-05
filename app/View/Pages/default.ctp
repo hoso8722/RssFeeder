@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php
-$detect = new Mobile_Detect;
-if($detect->isMobile()){
-    echo '<!-- Mobile device -->';
-}else{
-    echo '<!-- PC device -->';
-}
-?>
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>２ちゃんねるまとめるまとめ</title>
@@ -21,22 +14,30 @@ if($detect->isMobile()){
     <?php echo $this->Html->css('all.min.css'); ?>
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <script>
-    /*@cc_on 
-    var doc = document;
-    eval('var document = doc');
-    @*/
-    </script>
-    <![endif]-->
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<script>
+/*@cc_on 
+var doc = document;
+eval('var document = doc');
+@*/
+</script>
+<![endif]-->
     <?php
     echo $this->Html->meta('icon');
     echo $this->fetch('meta');
     echo $this->fetch('css');
     echo $this->fetch('script');
     ?>
-<?php echo $this->element('overlayAd_smartphone'); ?>
-
+    <script type="text/javascript">
+        var nend_params = {
+            "media": 8705,
+            "site": 48315,
+            "spot": 116005,
+            "type": 2,
+            "oriented": 1
+        };
+    </script>
+    <script type="text/javascript" src="https://js1.nend.net/js/nendAdLoader.js"></script>
 </head>
 
 <body data-spy="scroll" data-target=".bs-docs-sidebar">
@@ -57,7 +58,7 @@ if($detect->isMobile()){
                     <ul role="navigation" class="nav" id="dropmenu">
                         <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#" id="drop1"><i class="icon-star icon-white"></i>ブックマーク他<b class="caret"></b></a>
                             <ul aria-labelledby="drop1" role="menu" class="dropdown-menu">
-                                <li role="presentation"><?php echo $this->Html->link('ブックマーク', '/bookmark/index'); ?></li>
+                                <li role="presentation"><?php echo $this->Html->link('ブックマーク!', '/bookmark/index'); ?></li>
                                 <li class="divider" role="presentation"></li>
                                 <li role="presentation"><?php echo $this->Html->link('24Hランキング', '/dailys/people'); ?></li>
                                 <li role="presentation"><?php echo $this->Html->link('昨日のランキング', '/dailys/rank/' . date('Y/m/d', (time() - (60 * 60 * 24)))); ?></li>
@@ -110,11 +111,10 @@ if($detect->isMobile()){
                         <li id='book'><?php echo $this->Html->link('ブックマーク', '/bookmark/index'); ?></li>
                         <li id='info'><?php echo $this->Html->link('お問い合わせ', '/contact/index'); ?></li>
                     </ul>
-                    <?php
-                    if ($ocmenu == 0) {
-                        echo "<button id='ocmenu'><div class='icon-chevron-up'></div></button><div id='menu' style='display:none;'>";
+                    <?php if ($ocmenu == 0) {
+                        echo "<button id='ocmenu'>MENUを開く</button><div id='menu' style='display:none;'>";
                     } else {
-                        echo "<button id='ocmenu'><div class='icon-chevron-down'></div></button><div id='menu' style='display:block;'>";
+                        echo "<button id='ocmenu'>MENUを閉じる</button><div id='menu' style='display:block;'>";
                     }
                     ?>
                     <div class="lead"></div>
@@ -147,7 +147,26 @@ if($detect->isMobile()){
                     </ul>
                 </div>
             </div>
-            <?php echo $this->element('headerAd'); ?>
+            <div style="text-align:center;">
+                <script type="text/javascript" id="first">
+                    if (('createTouch' in document) || ('ontouchstart' in document)) {
+                        //for SP
+                    } else {
+                        //for PC
+
+                        var ninjaAd = '<script type="text/javascript" src="http://adm.shinobi.jp/s/695fa948d1d4c2f79060f622fb277e25"><\/script>';
+                        document.write(ninjaAd);
+                        var fluctAd = '<script type="text/javascript" src="http://sh.adingo.jp/?G=1000018274&guid=ON"><\/script>';
+                        document.write(fluctAd);
+
+                    }
+                </script>
+                <script type="text/javascript">
+                    //<![CDATA[
+                    if (typeof(adingoFluct) != "undefined") adingoFluct.showAd('1000026097');
+                    //]]>
+                </script>
+            </div>
         </div>
         <?php echo $this->element('footerAd'); ?>
         <?php echo $this->Session->flash(); ?>
