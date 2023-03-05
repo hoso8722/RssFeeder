@@ -58,7 +58,7 @@ eval('var document = doc');
                     <ul role="navigation" class="nav" id="dropmenu">
                         <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#" id="drop1"><i class="icon-star icon-white"></i>ブックマーク他<b class="caret"></b></a>
                             <ul aria-labelledby="drop1" role="menu" class="dropdown-menu">
-                                <li role="presentation"><?php echo $this->Html->link('ブックマーク', '/bookmark/index'); ?></li>
+                                <li role="presentation"><?php echo $this->Html->link('ブックマーク!', '/bookmark/index'); ?></li>
                                 <li class="divider" role="presentation"></li>
                                 <li role="presentation"><?php echo $this->Html->link('24Hランキング', '/dailys/people'); ?></li>
                                 <li role="presentation"><?php echo $this->Html->link('昨日のランキング', '/dailys/rank/' . date('Y/m/d', (time() - (60 * 60 * 24)))); ?></li>

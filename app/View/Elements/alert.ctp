@@ -1,4 +1,5 @@
-<div class="alert alert-error">
+<div class="hide falert alert-error">
     <button type="button" class="close" data-dismiss="alert">×</button>
-    閲覧履歴機能を追加しました。
+<!-- ここに文字を追加して「<div class="hide">」 ← hide の文字を消すと表示されます -->
+    
 </div>
