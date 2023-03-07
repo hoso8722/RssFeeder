@@ -111,6 +111,7 @@ if( $detect->isMobile() && !$detect->isTablet() ){
     echo $this->element('headerAd_sp');
   }elseif( $detect->isTablet() ){
     echo '<!-- Tablet device -->';
+    echo $this->element('headerAd_tab');
   }elseif( !$detect->isMobile() ){
     echo '<!-- PC device or others -->';
     echo $this->element('headerAd_pc');
