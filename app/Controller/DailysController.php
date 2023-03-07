@@ -27,7 +27,6 @@ class DailysController extends AppController
 				'thisday',
 				$year . '年' . $month . '月' . $day . '日'
 			);
-			pr($today_end);
 			$params = array(
 				'conditions' => array(
 					'Source.created BETWEEN ? AND ?' => array($today_start, $today_end)
@@ -37,7 +36,6 @@ class DailysController extends AppController
 				)
 			);
 			$datas = $this->Source->find('all', $params);
-			pr($this->Source->getDataSource()->getLog());
 			$this->set('datas', $datas);
 			$max = $this->getMax($datas);
 			$this->set('hr_data', $max);
@@ -67,11 +65,6 @@ class DailysController extends AppController
 				'limit' => 300
 			);
 			$datas = $this->Source->find('all', $params);
-			pr($this->Source->getDataSource()->getLog());
-			// 'all', array(
-			// 	'conditions' => array(
-			// 		'date(`Source.created`)' => $current_day), 'order' => array('Source.total' => 'desc'), 'limit' => 300));
-
 			$this->set('datas', $datas);
 
 			$max = $this->getMax($datas);

@@ -1,13 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php
-$detect = new Mobile_Detect;
-if($detect->isMobile()){
-    echo '<!-- Mobile device -->';
-}else{
-    echo '<!-- PC device -->';
-}
-?>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>２ちゃんねるまとめるまとめ</title>
@@ -35,8 +27,19 @@ if($detect->isMobile()){
     echo $this->fetch('css');
     echo $this->fetch('script');
     ?>
-<?php echo $this->element('overlayAd_smartphone'); ?>
-
+<?php
+$detect = new Mobile_Detect;
+if( $detect->isMobile() && !$detect->isTablet() ){
+    echo '<!-- smartphone device -->';
+    echo $this->element('overlayAd_sp');
+}elseif( $detect->isTablet() ){
+    echo '<!-- Tablet device -->';
+    echo $this->element('overlayAd_tab');
+}elseif( !$detect->isMobile() ){
+    echo '<!-- PC device or others -->';
+    echo $this->element('overlayAd_pc');
+}
+?>
 </head>
 
 <body data-spy="scroll" data-target=".bs-docs-sidebar">
@@ -98,7 +101,28 @@ if($detect->isMobile()){
     <!-- Subhead
 ================================================== -->
     <div class="container-fluid">
-        <div class="row-fluid">
+
+<!-- headerAD elements -->
+<div class="span12">
+  <div style="text-align:center;">
+<?php
+  if( $detect->isMobile() && !$detect->isTablet() ){
+    echo '<!-- smartphone device -->';
+    echo $this->element('headerAd_sp');
+  }elseif( $detect->isTablet() ){
+    echo '<!-- Tablet device -->';
+  }elseif( !$detect->isMobile() ){
+    echo '<!-- PC device or others -->';
+    echo $this->element('headerAd_pc');
+  }
+?>
+</div>
+</div>
+<!-- headerAD elements end -->
+
+
+	<div class="row-fluid">
+
             <div class="span3">
                 <div class="well sidebar-nav" id="navbar">
                     <h1 id='title'><?php echo $this->Html->image('title.png', array('alt' => '２ちゃんねるまとめるまとめ', 'url' => '/')) ?><span style='display:none;'>２ちゃんねるまとめるまとめ</span></h1>
@@ -147,17 +171,54 @@ if($detect->isMobile()){
                     </ul>
                 </div>
             </div>
-            <?php echo $this->element('headerAd'); ?>
-        </div>
-        <?php echo $this->element('footerAd'); ?>
+
+<!-- sidebarAD elements -->
+<div style="text-align:center;">
+<?php
+if( $detect->isMobile() && !$detect->isTablet() ){
+    echo '<!-- smartphone device -->';
+    echo $this->element('sidebarAd_sp');
+}elseif( $detect->isTablet() ){
+    echo '<!-- Tablet device -->';
+    echo $this->element('sidebarAd_tab');
+}elseif( !$detect->isMobile() ){
+    echo '<!-- PC device or others -->';
+    echo $this->element('sidebarAd_pc');
+} 
+?>
+</div>
+<!-- sidebar AD elements end -->
+
+	</div>
+
+
         <?php echo $this->Session->flash(); ?>
-        <?php echo $this->fetch('content'); ?>
+	<?php echo $this->fetch('content'); ?>
+
+<!-- footerAD elements -->
+<div class="span12">
+<div style="text-align:center;">
+<?php
+if( $detect->isMobile() && !$detect->isTablet() ){
+    echo '<!-- smartphone device -->';
+    echo $this->element('footerAd_sp');
+}elseif( $detect->isTablet() ){
+    echo '<!-- Tablet device -->';
+    echo $this->element('footerAd_tab');
+}elseif( !$detect->isMobile() ){
+    echo '<!-- PC device or others -->';
+    echo $this->element('footerAd_pc');
+}
+?>
+</div>
+</div>
+<!-- footerAD elements end -->
+
         <div id="bmmsg" class="span11 alert alert-success">
             <strong>最大300件までです</strong>
         </div>
     </div>
     <footer class="footer">
-
     </footer>
     <?php echo $this->element('footerScript'); ?>
 </body>
