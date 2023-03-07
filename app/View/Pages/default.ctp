@@ -168,7 +168,6 @@ eval('var document = doc');
                 </script>
             </div>
         </div>
-        <?php echo $this->element('footerAd'); ?>
         <?php echo $this->Session->flash(); ?>
         <?php echo $this->fetch('content'); ?>
         <div id="bmmsg" class="span11 alert alert-success">
