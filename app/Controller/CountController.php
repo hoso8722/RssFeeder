@@ -64,6 +64,11 @@ class CountController extends AppController
 	function _countup($id)
 	{
 		$entry = $this->Source->findById($id);
+/**		
+		echo('<pre>');
+		print_r($entry);
+		echo('</pre>');
+*/
 		if (empty($entry)) {
 			// echo (gettype($entry));
 			// var_dump($entry);
@@ -71,13 +76,21 @@ class CountController extends AppController
 			exit();
 		}
 		if ($entry['Source']['user_ip'] != $_SERVER['REMOTE_ADDR']) {
-
-			$this->Source->read(array('Source.id', 'Source.total', 'Source.user_ip'), $id);
+			
+			// count up source_total
+			$this->Source->read(array('Source.id', 'Source.total', 'Source.user_ip' ), $id);
 			$this->Source->set(array(
 				'total' => $entry['Source']['total'] + 1,
 				'user_ip' => $_SERVER['REMOTE_ADDR'],
 			));
 			$this->Source->save();
+			
+			//count up site_count
+			$this->Site->read(array('Site.id', 'Site.count'), $entry['Site']['id']);
+			$this->Site->set(array(
+				'count' => $entry['Site']['count'] + 1,
+			));
+			$this->Site->save();
 		}
 		$this->Source->id = $id;
 		return $this->Source->field('Source.link');
