@@ -20,6 +20,7 @@ class FeedsController extends AppController
 		$max = $this->getMaxSites($sites);
 		$this->set('s_max', $max);
 
+		/**
 		//Get referer set count
 		$pattern = '{^https?://([^:/]+)}';
 		preg_match($pattern, $this->referer(), $matches);
@@ -34,6 +35,7 @@ class FeedsController extends AppController
 				}
 			}
 		}
+		*/
 
 
 		if (is_numeric($sourceID)) {
