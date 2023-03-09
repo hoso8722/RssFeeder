@@ -38,7 +38,7 @@ class FeedShell extends AppShell
                 $this->Site->updateAll(
                         array(
                 		'`Site`.`rsscount`' => 0,
-      		                '`Site`.`count`' => 0,
+      		                //'`Site`.`count`' => 0,
                 	)
         	);
 	}	
