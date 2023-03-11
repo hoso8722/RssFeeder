@@ -17,7 +17,7 @@
 </div>    
 <div>
 以下のメールフォームからお問い合わせください。
-<a href="http://ws.formzu.net/fgen/S19894147/" target="_blank" >メールフォームはこちら</a>
+<a href="https://ws.formzu.net/fgen/S834554752/" target="_blank" >メールフォームはこちら</a>
 </div>
 
 </div>
