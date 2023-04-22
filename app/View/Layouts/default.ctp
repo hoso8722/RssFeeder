@@ -8,6 +8,7 @@
     <meta name="keywords" content="2ch,２ちゃんねる,まとめ,アンテナ,２ちゃんねるまとめ,2chまとめ" />
     <meta name="copyright" content="Copyright (C) ２ちゃんねるまとめるまとめ" />
     <meta name="author" content="２ちゃんねるまとめるまとめ">
+    <meta name="referrer" content="unsafe-url">
     <link rel="alternate" type="application/rss+xml" title="RSS2.0" href="https://2chmatomeru.info/entries/index.rss" />
     <!-- Le styles -->
     <?php echo $this->Html->css('all.min.css'); ?>
@@ -159,6 +160,7 @@ if( $detect->isMobile() && !$detect->isTablet() ){
                         <li><?php echo $this->Html->image('sports.png') . $this->Html->link('スポーツ', '/category/index/4'); ?></li>
                         <li><?php echo $this->Html->image('anime.png') . $this->Html->link('漫画・アニメ', '/category/index/5'); ?></li>
                         <li><?php echo $this->Html->image('game.png') . $this->Html->link('ゲーム', '/category/index/6'); ?></li>
+                        <li><?php echo $this->Html->image('game.png') . $this->Html->link('Vtuber', '/category/index/10'); ?></li>
                         <li><?php echo $this->Html->image('hobby.png') . $this->Html->link('趣味', '/category/index/8'); ?></li>
                         <li><?php echo $this->Html->image('life.png') . $this->Html->link('生活', '/category/index/9'); ?></li>
                         <li><?php echo $this->Html->image('r18.png') . $this->Html->link('アダルト', '/category/index/7'); ?></li>

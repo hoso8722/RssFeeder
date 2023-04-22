@@ -8,10 +8,11 @@
 					case 4: echo '「スポーツ」';break;
 					case 5: echo '「アニメ」';break;
 					case 6: echo '「ゲーム」';break;
+					case 10: echo '「Vtuber」';break;
 					case 7: echo '「アダルト」';break;
 					case 8: echo '「趣味」';break;
 					case 9: echo '「生活」';break;										
-					case 0: echo '「その他」';								
+					case 0: echo '「その他」';
                 } ?>        
               最新１００件
               </p></a></li>
