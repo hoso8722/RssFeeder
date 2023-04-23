@@ -100,4 +100,11 @@ class EntriesController extends AppController {
 		$this->set('entries',$datas);
 	}
 	
+	public function vtuber()
+	{
+		$this->Source->recursive = 0;
+		$conditions = array('Source.category_id' => 10);
+		$datas = $this->Source->find('all',array('conditions' => $conditions ,'order' => array('Source.created' => 'DESC'),'limit' => 10 ));
+		$this->set('entries',$datas);
+	}
 }

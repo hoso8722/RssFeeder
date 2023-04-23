@@ -74,6 +74,7 @@ if( $detect->isMobile() && !$detect->isTablet() ){
                                 <li role="presentation"><?php echo $this->Html->link('スポーツ', '/category/index/4'); ?></li>
                                 <li role="presentation"><?php echo $this->Html->link('漫画・アニメ', '/category/index/5'); ?></li>
                                 <li role="presentation"><?php echo $this->Html->link('ゲーム', '/category/index/6'); ?></li>
+                                <li role="presentation"><?php echo $this->Html->link('Vtuber', '/category/index/10'); ?></li>
                                 <li role="presentation"><?php echo $this->Html->link('趣味', '/category/index/8'); ?></li>
                                 <li role="presentation"><?php echo $this->Html->link('生活', '/category/index/9'); ?></li>
                                 <li role="presentation"><?php echo $this->Html->link('アダルト', '/category/index/7'); ?></li>
@@ -160,7 +161,7 @@ if( $detect->isMobile() && !$detect->isTablet() ){
                         <li><?php echo $this->Html->image('sports.png') . $this->Html->link('スポーツ', '/category/index/4'); ?></li>
                         <li><?php echo $this->Html->image('anime.png') . $this->Html->link('漫画・アニメ', '/category/index/5'); ?></li>
                         <li><?php echo $this->Html->image('game.png') . $this->Html->link('ゲーム', '/category/index/6'); ?></li>
-                        <li><?php echo $this->Html->image('game.png') . $this->Html->link('Vtuber', '/category/index/10'); ?></li>
+                        <li><?php echo $this->Html->image('youtube1.png') . $this->Html->link('Vtuber', '/category/index/10'); ?></li>
                         <li><?php echo $this->Html->image('hobby.png') . $this->Html->link('趣味', '/category/index/8'); ?></li>
                         <li><?php echo $this->Html->image('life.png') . $this->Html->link('生活', '/category/index/9'); ?></li>
                         <li><?php echo $this->Html->image('r18.png') . $this->Html->link('アダルト', '/category/index/7'); ?></li>

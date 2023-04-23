@@ -17,6 +17,7 @@
 <tr><td><?php echo $this->Html->link('スポーツカテゴリ10件', '/entries/sports.rss'); ?></td></tr>
 <tr><td><?php echo $this->Html->link('漫画・アニメカテゴリ10件', '/entries/anime.rss'); ?></td></tr>
 <tr><td><?php echo $this->Html->link('ゲームカテゴリ10件', '/entries/game.rss'); ?></td></tr>
+<tr><td><?php echo $this->Html->link('Vtuberカテゴリ10件', '/entries/vtuber.rss'); ?></td></tr>
 <tr><td><?php echo $this->Html->link('趣味カテゴリ10件', '/entries/hobby.rss'); ?></td></tr>
 <tr><td><?php echo $this->Html->link('生活カテゴリ10件', '/entries/life.rss'); ?></td></tr>
 <tr><td><?php echo $this->Html->link('アダルトカテゴリ10件', '/entries/r18.rss'); ?></td></tr>
