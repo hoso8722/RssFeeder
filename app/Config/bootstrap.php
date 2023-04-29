@@ -100,6 +100,25 @@ Configure::write('Dispatcher.filters', array(
  * Configures default file logging options
  */
 App::uses('CakeLog', 'Log');
+
+
+CakeLog::config('source_sql', array(
+	'engine' => 'File',
+	'types' => array('source_sql'),
+	'file' => 'source_sql',
+));
+CakeLog::config('site_sql', array(
+	'engine' => 'File',
+	'types' => array('site_sql'),
+	'file' => 'site_sql',
+));
+define('LOG_FOR_YOU', 'log_for_you');
+
+CakeLog::config('log_for_you', array(
+'engine' => 'FileLog',
+'types' => array('log_for_you'),
+'file' => 'log_for_you',
+));
 CakeLog::config('debug', array(
 	'engine' => 'File',
 	'types' => array('notice', 'info', 'debug'),

@@ -112,7 +112,6 @@ class FeedShell extends AppShell
 			//$num = $this->args[0];
 			$this->Site->recursive = 0;
 			$datas = $this->Site->findAllByRssid($num);
-
 			if(empty($datas)){
 				return;
 			}
@@ -143,8 +142,7 @@ class FeedShell extends AppShell
 					$siteId = $entry['Site']['id'];
 					$categoryId = $entry['Site']['category'];
 					$date = date('Y-m-d H:i:s',time());
-					if(!empty($entry['Source']['link']))
-					{
+					if(!empty($entry['Source']['link'])){
 						$link = $entry['Source']['link'];
 					}else{
 						$link = null;
@@ -173,20 +171,29 @@ class FeedShell extends AppShell
 							'site_id' => $siteId,
 						));
 						$this->Source->save();
+						//$this->log($log, LOG_FOR_YOU);
 						$id = $this->Source->getLastInsertId();;  					
 						
 						$this->Source->query("UPDATE `sources` SET `category_id` = " . $categoryId . " WHERE id=" . $id);  					
 						
 						$FieldToInc = 'rsscount';
-						$this->Source->query("UPDATE `sites` SET " . $FieldToInc . " = " . $FieldToInc . " + 1 WHERE id=" . $siteId);  					
+						//$this->Site->create();
+						$this->Site->query("UPDATE `sites` SET " . $FieldToInc . " = " . $FieldToInc . " + 1 WHERE id=" . $siteId);  
+						$this->Site->getDataSource()->getLog();	
+						//$this->log($source_sql,'source_sql');
+						
 						if($i == 0)
 						{
+							//$this->Site->create();
 							$this->Site->query("UPDATE `sites` SET `modified` = '".$date. "' WHERE `sites`.`id` = '".$siteId."'");
+							$this->Site->getDataSource()->getLog();
+							//$this->log($site_sql,'site_sql');
 							/*$this->Site->read('modified',$siteId);
 							$this->Site->set('modified',$date);
 							$this->Site->save();*/
+							// $this->log($log, LOG_FOR_YOU);
 						}
-					}
+					}	
 				}else{
 					//Send Mail
 					$Email = new CakeEmail();
@@ -201,7 +208,7 @@ class FeedShell extends AppShell
 			}
 		}	
 	}
-	
+
 	function resetCount()
 	{
 		$this->Site->unbindModel(array('hasMany' => array('Source')));

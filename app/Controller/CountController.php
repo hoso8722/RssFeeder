@@ -64,6 +64,7 @@ class CountController extends AppController
 	function _countup($id)
 	{
 		$entry = $this->Source->findById($id);
+		//$this->log($entry,LOG_FOR_YOU);
 /**		
 		echo('<pre>');
 		print_r($entry);
@@ -78,19 +79,39 @@ class CountController extends AppController
 		if ($entry['Source']['user_ip'] != $_SERVER['REMOTE_ADDR']) {
 			
 			// count up source_total
-			$this->Source->read(array('Source.id', 'Source.total', 'Source.user_ip' ), $id);
+			$read_data = $this->Source->read(array('Source.id', 'Source.total', 'Source.user_ip' ), $id);
+			//$this->log($read_data, LOG_FOR_YOU);
 			$this->Source->set(array(
 				'total' => $entry['Source']['total'] + 1,
 				'user_ip' => $_SERVER['REMOTE_ADDR'],
 			));
-			$this->Source->save();
-			
+			$source_sql = $this->Source->save();
+			//$this->log( $source_sql, 'source_sql');
+
+			//check deleted sites
+			//$this->Site->unbindModel(array('hasMany' => array('Source')));
+			//$site = $this->Site->findById($entry['Site']['id']);
+			//$this->log($site_id, LOG_FOR_YOU);
+
+			//$this->log($entry, LOG_FOR_YOU);
+			if($entry['Source']['site_id'] !== $entry['Site']['id'] ){
+				$this->Source->id = $id;
+				return $this->Source->field('Source.link');
+			}
 			//count up site_count
+
+			$this->Site->unbindModel(array('hasMany' => array('Source')));
 			$this->Site->read(array('Site.id', 'Site.count'), $entry['Site']['id']);
 			$this->Site->set(array(
 				'count' => $entry['Site']['count'] + 1,
 			));
-			$this->Site->save();
+			
+			$site_sql = $this->Site->save();
+							
+			//$this->log( $site_sql, 'site_sql');
+			//$this->log($entry, LOG_FOR_YOU);
+			//$entry2 = $this->Source->findById($id);
+			//$this->log($entry2, LOG_FOR_YOU);
 		}
 		$this->Source->id = $id;
 		return $this->Source->field('Source.link');
