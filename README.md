@@ -1,6 +1,8 @@
 ## 開発環境
 
 - PHP
+- MySQL
+- Apache
 - フレームワーク CakePHP
 
 ## アプリ概要
